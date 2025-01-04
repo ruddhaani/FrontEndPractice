@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling Start */
+.navbar{
+    top:0;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo{
+    margin-left: 130px;
+    cursor: pointer;
+}
+
+ul{
+    list-style: none;
+    width: 363px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Spectral';
+    font-weight:500;
+    font-size: large;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: #C9A978;
+}
+
+.navItems{
+    margin-right: 75px;
+}
+
+.heartIcon{
+    margin: 0px 25px 0 0;
+}
+
+.navIcons{
+    margin-right: 80px;
+}
+
+.navRight{
+    display: flex;
+}
+
+body{
+    padding-top: 80px;
+}
+
+/* Navbar Styling End */
+
+
+
+/* About Us Start */
+
+#aboutUsHeading{
+    font-family: 'Bebas Neue';
+    font-size: 4rem;
+    color: #C9A978;
+}
+
+.aboutUs{
+    height: 80vh;
+    display: flex;
+    padding: 25px;
+    justify-content: space-around;
+}
+
+.aboutUsLeft{
+    width: 40%;
+    /* border: 2px solid green; */
+    font-family: 'Spectral';
+    font-size: 1.25rem;
+    padding: 15px;
+    margin-left: 130px;
+}
+
+.aboutUsLeft p{
+    line-height: 30px;
+}
+
+.aboutUsRight{
+    margin-right: 122px;
+    font-family: 'Spectral';
+    /* border: 2px solid blue; */
+}
+
+.aboutUsLeftBottom{
+    margin-top: 38px;
+    /* border-bottom: 2px solid #C9A978; */
+}
+
+.customButton {
+    margin-top: 17px;
+    width: 283px;
+    position: relative;
+    background-color: white;
+    color: #4E4C4C;
+    font-size: 16px;
+    font-family: 'Spectral';
+    border: 2px solid #C9A978;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: capitalize;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    outline: none;
+    font-weight: 500;
+}
+
+.customButton:hover {
+    background-color: #b4916e;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.detailButtons{
+    margin-top: 17px;
+    display: flex;
+}
+
+.detailButton{
+    height: 25px;
+    font-size: small;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: 4E4C4C;
+    background-color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 180px;
+}
+
+.detailButton:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+#premiumLeather{
+    margin-right: 110px;
+}
+
+.shoeImages{
+    margin-top: 59px;
+    display: flex;
+    justify-content: space-between;
+    width: 530px;
+}
+
+.bannerTextInner h4{
+    font-weight: 500;
+    width: 120px;
+    border-bottom: 2px solid #C9A978;
+    margin-top: 0px;
+    height: 25px;
+}
+
+.bannerTextInner p{
+    margin-top: 12px;
+    font-weight: 500;
+    width: 250px;
+}
+
+.bannerTextInner2 h4{
+    font-weight: 500;
+    width: 60px;
+    height: 25px;
+    border-bottom: 2px solid #C9A978;
+    margin-top: 0px;
+}
+
+.bannerTextInner2 p{
+    margin-top: 12px;
+    font-weight: 500;
+    width: 340px;
+}
+.bannerText{
+    display: flex;
+    justify-content: space-around;
+    width: 650px;
+    margin-left: 15px;
+}
+
+/* About Us End */
+
+/* Our History Start */
+
+.history{
+    background-color: #b4916e;
+    padding: 100px 0px 100px 150px;
+    display: flex;
+    align-items: center;
+}
+
+.founderImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 25px 25px 25px 25px;
+    border: 5px solid beige;
+    border-radius: 15px;
+    margin-right: 150px;
+}
+
+
+.historyRight h3{
+    font-family: 'Bebas Neue';
+    font-size: 4rem;
+    color: #EFF1F3;
+    margin-bottom: 10px;
+}
+
+.historyRight p{
+    font-family: 'Spectral';
+    width: 500px;
+    color: #2f2e2e;
+}
+
+/* History Styling End */
+
+/* Research Lab Start */
+
+.researchLab{
+    display: flex;
+    padding: 110px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.researchLabLeft h3{
+    font-family: 'Bebas Neue';
+    font-size: 4rem;
+    color: #C9A978;
+    margin-bottom: 10px;
+}
+
+.researchLabLeft p{
+    font-family: 'Spectral';
+    color: #4E4C4C;
+    width: 500px;
+}
+
+.researchLabRight img{
+    width: 450px;
+    height: auto;
+}
+
+/* Research Lab End */
+
+/* Footer Start */
+
+.footer{
+    height: 250px;
+    background-color: black;
+}

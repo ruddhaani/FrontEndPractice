@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>To Do List</h1>
+
+    <div class="formContainer">
+        <div class="inputContainer">
+            <label for="task">Enter Task</label>
+            <input type="text" name="task" id="task">
+        </div>
+        
+        <div class="inputContainer">
+            <label for="urgency">Enter Urgency</label>
+            <input type="text" name="urgency" id="urgency">
+        </div>
+
+        <div class="inputContainer">
+          <label for="searchBox">Search</label>
+          <input type="text" name="searchBox" id="searchBox" oninput="searchTask()">
+      </div>
+        
+
+        <div class="taskAddButton">
+            <button onclick="addToList()">Add Task</button>
+        </div>
+    </div>
+
+    <div class="container">
+        
+    </div>
+
+
+    <!-- <div class="addButton">
+        <button>Add</button>
+    </div> -->
+    <script src="index.js"></script>
+  </body>
+</html>

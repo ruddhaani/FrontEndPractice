@@ -1,0 +1,87 @@
+h1{
+    font-family: 'Inter' , serif;
+    align-self: center;
+    justify-self: center;
+    color: teal;
+}
+
+.formContainer{
+    background-color: tomato;
+    color: white;
+    border-radius: 10px;
+    font-family: "Inter";
+    justify-self: center;
+    padding: 20px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* align-items: center; */
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputContainer input{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+input:focus{
+    outline: none;
+}
+
+
+.taskAddButton button{
+    width: 100px;
+    height: 30px;
+    background-color:teal;
+    border: none;
+    border-radius: 5px;
+    color: white;   
+    cursor: pointer;
+}
+
+.container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.toDoBox{
+    width: 500px;
+    height: 150px;
+    background-color: teal;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+    border: none;
+    border-radius: 10px;
+    font-family: "Inter" , serif;
+    color: white;
+}
+
+.toDoButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.toDoButtons button{
+    width: 100px;
+    height: 30px;
+    background-color:coral;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}

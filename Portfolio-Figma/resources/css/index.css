@@ -1,0 +1,412 @@
+body{
+    padding-left: 200px;
+    padding-right: 200px;
+    background-color: #272727;
+}
+
+/* Navbar styling Start*/
+.navbar{
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    /* height: 160px; */
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #4D4D4D;
+}
+
+.navTitle{
+    font-family: "Sora" , serif;
+    font-weight: bold;
+    font-size: 24px;
+    justify-self: center;
+    align-self: center;
+}
+
+.navTitle a{
+    color: white;
+    text-decoration: none;
+}
+
+.navItems{
+    font-family: "Sora" , serif;
+    font-weight: 300;
+    font-size: 16px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 64px;
+    justify-content: center;
+    align-items: center;
+}
+
+.navItems a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Navbar styling End */
+
+/* Brief Intro Start */
+
+.briefIntro h2{
+    font-family: "Sora" , serif;
+    font-size: 56px;
+    color: transparent;
+    background-image: linear-gradient(to bottom right, #3BF686 0%, #3BF686 51%, #4CA9FF 90% );
+    background-clip: text;
+    font-weight: bold;
+    width: 1029px;
+    line-height: 72px;
+}
+
+/* Brief Intro Ends */
+
+
+
+/* Biography Starts */
+
+.biography{
+    margin-top: 63px;
+    height: 168px;
+    padding: 5px;
+    display: flex;
+    gap: 85px;
+}
+
+.biographyDetails{
+    width: 690px;
+    height: 163px;
+    display: flex;
+    gap: 35px;
+}
+
+.avatar{
+    width: 155px;
+    height: 155px;
+    border: 4px solid transparent;
+    border-radius: 100px;
+    background: 
+    linear-gradient(to right, #272727, #272727), 
+    linear-gradient(to bottom left, #4CA9FF 0%, #4CA9FF 51%, #3BF686 90%); 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.biographyInfo{
+    width: 499px;
+    height: 155px;
+    margin: 2px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+
+.connectBiography{
+    width: 300px;
+    height: 150px;
+}
+
+#biographyInfoTitle{
+    margin: 0;
+    font-family: "Sora" , serif;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 0;
+    height: 60px;
+}
+
+#biographyInfoDescription{
+    margin: 0;
+    font-family: "Sora",serif;
+    font-size: medium;
+    font-weight: 300;
+    color: white;
+    width: 300px;
+}
+
+#biographyInfoDescription #span1{
+    color: #4CA9FF;
+}
+
+#biographyInfoDescription #span2{
+    color: #62D9FF;
+}
+
+#biographyInfoDescription #span3{
+    color: #80FFA3;
+}
+
+.connectBiographyTitle p{
+    font-family: "Sora" , serif;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.connectBiographyIcons{
+    display: flex;
+    gap: 17px;
+}
+.connectBiographyIcons img{
+    width: 32px;
+    height: 32px;
+}
+
+/* Biography Ends */
+
+
+/* What I do Starts */
+
+.whatIDoSection{
+    height: 226px;
+    width: 1124.04px;
+    margin-top: 81px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+.whatIDoContent{
+    margin: 5px;
+    height: 156px;
+    width: 458px;
+    font-family: "Sora" , serif;
+}
+
+.whatIDoContent h3{
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    margin: 22px 0 22px 0;
+}
+
+.whatIDoContent p{
+    font-size: 18px;
+    color: white;
+    font-weight: 200;
+}
+
+#whatIDoContentSpan1{
+    color: #3BF686;
+    font-weight: bold;
+}
+
+#whatIDoContentSpan2{
+    background-image: linear-gradient(to bottom right, #4CA9FF 0%, #4CA9FF 51%, #3BF686 90% );
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.whatIDoCards{
+    margin: 0;
+    height: 226px;
+    width: 555px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.WIDCardTop{
+    height: 72px;
+    width: 72px;
+    border: 4px solid transparent;
+    background: 
+    linear-gradient(to right, #323443, #323443), 
+    linear-gradient(to bottom left, #4CA9FF 0%, #4CA9FF 51%, #3BF686 90%); 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    border-radius: 50%;
+    z-index: 200;
+}
+
+.WIDCardTop  img{
+    width: 36px;
+    height: 36px;
+}
+
+.WIDCardBottom{
+    width: 242px;
+    height: 130px;
+    border: 2px solid yellow;
+    background-color: #323443;
+    border: none;
+    border-radius: 15px ;
+    position: relative;
+    top: -36px;
+    z-index: 100;
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Sora" , serif;
+}
+
+.WIDCardBottom h3{
+    margin: 0;
+    color: white;
+    font-weight: 300;
+    font-size: 18px;
+    justify-self: center;
+    margin-bottom: 10px;
+}
+
+.WIDCardBottom p{
+    margin: 0;
+    text-align: center;
+    justify-self: center;
+    font-weight: 200;
+    color: #EFEDE8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* What I do Ends */
+
+
+/* Featured Projects Starts */
+
+.featuredProjects{
+    margin-top: 104px;
+    height: 810px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.featuredProjects h4{
+    font-family: "Sora" , serif;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.featuredProjectSection{
+    height: 282px;
+    margin-top: 66px;
+    display: flex;
+    overflow: hidden;
+}
+
+.featuredProjectSectionCard{
+    position: relative;
+    margin: 0;
+    width: 50%;
+    height: 282px;
+    /* border: 2px solid red; */
+    background-color: #323443;
+    padding-left: 52px;
+    padding-right: 52px;
+    border-radius: 4px;
+}
+
+.featuredProjectSectionCard #newLogo{
+    height: 25px;
+    width: 25px;
+    margin-top: 20px;
+}
+
+.featuredProjectSectionContent{
+    width: 50%;
+    height: 282px;
+}
+
+.featuredProjectSectionCardTechStack{
+    display: flex;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.techStack{
+    height: 16px;
+    width: 16px;
+    background-color: white;
+    border: none;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#featuredProjectSectionCardBanner1{
+    margin-top: 20px;
+    background-image: url('../images/banner1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 200px;
+    bottom: 0;
+    margin: 0;
+}
+
+#featuredProjectSectionCardBanner2{
+    margin-top: 20px;
+    background-image: url('../images/banner2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 200px;
+    bottom: 0;
+    margin: 0;
+}
+
+
+.featuredProjectSectionCardArrow{
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    background-color: #3F4152;
+    border-radius: 5px;
+    top: 20px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.featuredProjectSectionCardArrow img{
+    width: 20px;
+    height: 20px;
+}
+
+.featuredProjectSectionContent{
+    padding: 20px;
+    font-family: "Sora" , serif;
+    color: white;
+}
+
+.FPSCTech{
+    font-size: 14px;
+    color: #DEDEDE;
+    font-weight: medium;
+    margin: 0;
+}
+
+.FPSCTitle{
+    width: 80%;
+}
+
+.FPSCContent{
+    font-size: 12px;
+    width: 80%;
+    line-height: 1.6;
+    color: #D4D4D4;
+}
+
+
