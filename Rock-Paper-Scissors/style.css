@@ -51,3 +51,14 @@
 .scoreCard{
     color: red;
 }
+
+.result{
+    display: none;
+    justify-self: center;
+    font-family: "Poppins";
+    font-weight: bold;
+    color: tomato;
+    padding: 30px;
+    font-size: 2rem;
+    letter-spacing: 0.18rem;
+}

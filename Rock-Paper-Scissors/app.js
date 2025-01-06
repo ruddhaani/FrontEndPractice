@@ -3,6 +3,7 @@ let paper = document.getElementById("paper");
 let scissors = document.getElementById("scissors");
 
 let score = document.querySelector(".count");
+let resultElement = document.querySelector(".result");
 
 let options = ["rock" , "paper" , "scissors"];
 let playerScore = 0;
@@ -14,19 +15,26 @@ const playGame = (playerChoice)=>{
     console.log("Computer chose: " + options[computerChoice]);
 
     if(playerChoice === options[computerChoice]){
+        showResult(options[computerChoice] , "none" , "draw");
         return;
     }else if(playerChoice === "rock" && options[computerChoice] === "scissors"){
         playerScore++;
+        showResult(options[computerChoice] , "You" ,);
     }else if(playerChoice === "scissors" && options[computerChoice] === "rock"){
         computerScore++;
+        showResult(options[computerChoice] , "Computer");
     }else if(playerChoice === "scissors" && options[computerChoice] === "paper"){
         playerScore++;
+        showResult(options[computerChoice] , "You" ,);
     }else if(playerChoice === "paper" && options[computerChoice] === "scissors"){
         computerScore++;
+        showResult(options[computerChoice] , "Computer");
     }else if(playerChoice === "paper" && options[computerChoice] === "rock"){
         playerScore++;
+        showResult(options[computerChoice] , "You" ,);
     }else if(playerChoice === "rock" && options[computerChoice] === "paper"){
         computerScore++;
+        showResult(options[computerChoice] , "Computer");
     }
 
     showScore(playerScore , computerScore);
@@ -45,6 +53,17 @@ const showScore = (playerScore, computerScore) => {
     
     console.log(score.innerHTML);
 };
+
+const showResult = (computerChoice , winner , result="win" )=>{
+    if(result === "draw"){
+        resultElement.innerText = `Computer also chose ${computerChoice}. It was a draw`;
+        resultElement.style.display = "block";
+        return;
+    }
+
+    resultElement.innerText = `Computer chose ${computerChoice}. The winner is ${winner}.`
+    resultElement.style.display = "block";
+}
 
 showScore(0,0);
 
