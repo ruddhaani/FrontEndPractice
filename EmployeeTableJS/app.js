@@ -64,7 +64,7 @@ function showEmployees(index, searchText="" , pageNumber = 1 , pageSize = 2) {
                         <td>${employee.empId}</td>
                         <td>${employee.department}</td>
                         <td id="editButtons">
-                            <button onclick="updateData(${emp} , 0)">Update</button> <button onclick="deleteData(${emp})">Delete</button>
+                            <button onclick="updateData(${emp} , 0 , '${searchText}' , ${pageNumber})">Update</button> <button onclick="deleteData(${emp})">Delete</button>
                         </td>`
 
         if (index >= 0 && index < empData.length && index == emp) {
@@ -75,7 +75,7 @@ function showEmployees(index, searchText="" , pageNumber = 1 , pageSize = 2) {
                         <td><input type="number" name="empId" id="updatedEmpId" value = ${empId}></td>
                         <td><input type="text" name="department" id="updatedDepartment" value="${department}"></td>
                         <td id="editButtons">
-                            <button onclick="updateData(${emp} , 1)">Update</button> <button onclick="deleteData(${emp})">Delete</button>
+                            <button onclick="updateData(${emp} , 1 , '${searchText}' , ${pageNumber})">Update</button> <button onclick="deleteData(${emp})">Delete</button>
                         </td>`
         }
 
@@ -133,9 +133,9 @@ function deleteData(index) {
 
 //Update Data Function
 
-function updateData(index, flag) {
+function updateData(index, flag , searchText , pageNumber) {
     if(flag === 0){
-        showEmployees(index);
+        showEmployees(index , searchText , pageNumber);
     }else{
         let updatedName = document.getElementById("updatedName").value;
         let updatedEmpId = document.getElementById("updatedEmpId").value;
@@ -144,7 +144,7 @@ function updateData(index, flag) {
         empData[index].name = updatedName;
         empData[index].empId = updatedEmpId;
         empData[index].department = updatedDepartment;
-        showEmployees(-1);
+        showEmployees(-1 , searchText , pageNumber);
     }
 }
 
