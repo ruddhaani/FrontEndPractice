@@ -64,7 +64,7 @@ function showEmployees(index, searchText="" , pageNumber = 1 , pageSize = 2) {
                         <td>${employee.empId}</td>
                         <td>${employee.department}</td>
                         <td id="editButtons">
-                            <button onclick="updateData(${emp} , 0 , '${searchText}' , ${pageNumber})">Update</button> <button onclick="deleteData(${emp})">Delete</button>
+                            <button onclick="updateData(${emp} , 0 , '${searchText}' , ${pageNumber})">Update</button> <button onclick="deleteData(${emp} , '${searchText}' , ${pageNumber})">Delete</button>
                         </td>`
 
         if (index >= 0 && index < empData.length && index == emp) {
@@ -75,7 +75,7 @@ function showEmployees(index, searchText="" , pageNumber = 1 , pageSize = 2) {
                         <td><input type="number" name="empId" id="updatedEmpId" value = ${empId}></td>
                         <td><input type="text" name="department" id="updatedDepartment" value="${department}"></td>
                         <td id="editButtons">
-                            <button onclick="updateData(${emp} , 1 , '${searchText}' , ${pageNumber})">Update</button> <button onclick="deleteData(${emp})">Delete</button>
+                            <button onclick="updateData(${emp} , 1 , '${searchText}' , ${pageNumber})">Update</button> <button onclick="deleteData(${emp} , '${searchText}' , ${pageNumber})">Delete</button>
                         </td>`
         }
 
@@ -125,9 +125,11 @@ function addData() {
 
 //Delete Data Function
 
-function deleteData(index) {
+function deleteData(index , searchText , pageNumber) {
     empData.splice(index, 1);
-    showEmployees(-1);
+    showEmployees(-1 , searchText , pageNumber);
+
+    
 }
 
 
