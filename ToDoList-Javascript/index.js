@@ -75,7 +75,7 @@ let showToDoList = (index, searchText = "", pageNumber = 1, pageSize = 2) => {
         let buttonElement = document.createElement("button");
         buttonElement.innerHTML = `${i}`;
         buttonElement.addEventListener('click' , getPage);
-        containerElement.appendChild(buttonElement);
+        document.getElementById("pagination").appendChild(buttonElement);
         
     }
 };

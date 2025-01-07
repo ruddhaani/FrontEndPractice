@@ -27,9 +27,22 @@ let empTable = document.getElementById("employeeDetails")
 
 
 
-function showEmployees(index, searchText="") {
+function showEmployees(index, searchText="" , pageNumber = 1 , pageSize = 2) {
     let tableRowRemovable = document.querySelectorAll(".tableData");
     tableRowRemovable.forEach((x) => x.remove());
+
+    let filteredElementCount = empData.filter((x)=>x.name.toLowerCase().search(searchText.toLowerCase()) != -1).length;
+    console.log(filteredElementCount);
+
+    let fromIndex = (pageNumber - 1) * pageSize;
+    let toIndex = Math.min(fromIndex + pageSize - 1, filteredElementCount - 1);
+
+    let totalPages = Math.floor(filteredElementCount/pageSize);
+    let count = -1;
+
+    if(filteredElementCount % pageSize != 0){
+        totalPages ++;
+    }
 
     for (emp in empData) {
 
@@ -37,6 +50,13 @@ function showEmployees(index, searchText="") {
         if(employee.name.toLowerCase().search(searchText.toLowerCase()) == -1){
             continue;
         }
+
+        count ++;
+
+        if(!(count >= fromIndex && count <= toIndex)){
+            continue;
+        }
+
         let tableRow = document.createElement("tr");
         tableRow.classList.add("tableData");
 
@@ -63,10 +83,18 @@ function showEmployees(index, searchText="") {
         empTable.appendChild(tableRow);
     }
 
+    document.getElementById("pagination").innerHTML = "";
+    for(let i = 1 ; i <= totalPages ; i++){
+        let buttonElement = document.createElement("button");
+        buttonElement.innerHTML = `${i}`;
+        buttonElement.addEventListener('click' , getPage);
+        document.getElementById("pagination").appendChild(buttonElement);
+    }
+
 }
 
 //Show Employee Function call
-showEmployees(-1);
+showEmployees(-1 , "");
 
 
 //Add Data function
@@ -126,4 +154,9 @@ function searchData(){
     let input = document.getElementById("searchBox").value;
 
     showEmployees(-1 , input);
+}
+
+function getPage(event){
+    let pageNumber = Number(event.target.textContent);
+    showEmployees(-1,"", pageNumber)
 }
