@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Roboto" , serif;
+}
+
+#title{
+    padding: 20px 0;
+    justify-self: center;
+    font-size: 2rem;
+}
+
+.formContainer{
+    justify-self: center;
+    gap:10px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    background-color: teal;
+    border: none;
+    border-radius: 8px;
+    padding: 20px 0;
+    margin: 10px 0;
+    color: white;
+}
+
+.formContainer input{
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    padding: 5px;
+}
+
+.formContainer button{
+    width: 100px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: tomato;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.formContainer button:hover{
+    background-color: rgb(84, 33, 24);
+    transform: translateY(-2px);
+    color: white;
+}
+
+
+.container{
+    justify-self: center;
+}
+
+#employeeDetails{
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+#employeeDetails td,th {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+
+#employeeDetails tr{
+    text-align: center;
+}
+
+#editButtons button{
+    padding: 2px;
+    margin: 5px;
+    text-align: center;
+    width: 100px;
+    background-color: steelblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.5s ease-in-out;
+    height: 25px;
+}
+
+#editButtons button:hover{
+    background-color: rgb(26, 48, 67);
+    cursor: pointer;
+    color: white;
+    transform: translateY(-2px);
+}

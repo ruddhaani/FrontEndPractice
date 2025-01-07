@@ -49,7 +49,7 @@ let showToDoList = (index, searchText = "", pageNumber = 1, pageSize = 2) => {
                 <h4>Urgency : ${toDoList[key].urgency}</h4>
             </div>
             <div class="toDoButtons">
-                <button onclick="updateTask(${key}, 0 , ${pageNumber} , ${searchText})">Update</button>
+                <button onclick="updateTask(${key}, 0 , ${pageNumber} , '${searchText}')">Update</button>
                 <button onclick="deleteTask(${key})">Delete</button>
             </div>
         `;
@@ -61,7 +61,7 @@ let showToDoList = (index, searchText = "", pageNumber = 1, pageSize = 2) => {
                     <h4>Urgency : <input type="text" id="updatedUrgency" value="${toDoList[key].urgency}"></h4>
                 </div>
                 <div class="toDoButtons">
-                    <button onclick="updateTask(${key}, 1 , ${pageNumber} , ${searchText})">Update</button>
+                    <button onclick="updateTask(${key}, 1 , ${pageNumber} , '${searchText}')">Update</button>
                     <button onclick="deleteTask(${key})">Delete</button>
                 </div>
             `;
