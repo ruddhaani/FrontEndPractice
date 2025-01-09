@@ -91,7 +91,7 @@
   --bs-tertiary-color: rgba(33, 37, 41, 0.5);
   --bs-tertiary-color-rgb: 33, 37, 41;
   --bs-tertiary-bg: #f8f9fa;
-  --bs-tertiary-bg-rgb: 255, 255, 255;
+  --bs-tertiary-bg-rgb: 248, 249, 250;
   --bs-heading-color: inherit;
   --bs-link-color: #0d6efd;
   --bs-link-color-rgb: 13, 110, 253;
@@ -4046,7 +4046,7 @@ textarea.form-control-lg {
   line-height: 1;
   color: var(--bs-navbar-color);
   background-color: transparent;
-  border: none;
+  border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
   border-radius: var(--bs-navbar-toggler-border-radius);
   transition: var(--bs-navbar-toggler-transition);
 }
@@ -4061,7 +4061,7 @@ textarea.form-control-lg {
 .navbar-toggler:focus {
   text-decoration: none;
   outline: 0;
-  box-shadow: none;
+  box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width);
 }
 
 .navbar-toggler-icon {
