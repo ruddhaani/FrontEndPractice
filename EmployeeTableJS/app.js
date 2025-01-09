@@ -32,7 +32,7 @@ function showEmployees(index, searchText="" , pageNumber = 1 , pageSize = 2) {
     tableRowRemovable.forEach((x) => x.remove());
 
     let filteredElementCount = empData.filter((x)=>x.name.toLowerCase().search(searchText.toLowerCase()) != -1).length;
-    console.log(filteredElementCount);
+    let firstPage = 1
 
     let fromIndex = (pageNumber - 1) * pageSize;
     let toIndex = Math.min(fromIndex + pageSize - 1, filteredElementCount - 1);
@@ -53,10 +53,12 @@ function showEmployees(index, searchText="" , pageNumber = 1 , pageSize = 2) {
 
         count ++;
 
+
         if(!(count >= fromIndex && count <= toIndex)){
             continue;
         }
 
+        
         let tableRow = document.createElement("tr");
         tableRow.classList.add("tableData");
 
@@ -125,11 +127,18 @@ function addData() {
 
 //Delete Data Function
 
-function deleteData(index , searchText , pageNumber) {
+function deleteData(index , searchText , pageNumber , pageSize = 2) {
     empData.splice(index, 1);
-    showEmployees(-1 , searchText , pageNumber);
 
-    
+    let filteredElementCount = empData.filter((x)=> x.name.toLowerCase().includes(searchText.toLowerCase())).length;
+    console.log(filteredElementCount);
+
+    let totalPages = Math.ceil(filteredElementCount/pageSize);
+    if(pageNumber > totalPages){
+        pageNumber = 1;
+    }
+
+    showEmployees(-1 , searchText , pageNumber);
 }
 
 
@@ -155,7 +164,7 @@ function updateData(index, flag , searchText , pageNumber) {
 function searchData(){
     let input = document.getElementById("searchBox").value;
 
-    showEmployees(-1 , input);
+    showEmployees(-1 , input  , 1);
 }
 
 function getPage(event){
