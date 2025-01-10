@@ -45,6 +45,25 @@ const addEmployeeToDB = async ( name , email , salary)=> {
     }
 }
 
+//Delete Employee
+
+async function deleteEmployeeFromDB(id){
+    try {
+        let employeeId = Number(id);
+        const response = await fetch(`${apiEndPoint}${employeeId}`,{
+            method: 'DELETE',
+        });
+
+        if(!response.ok){
+            throw new Error(`error: ${response.status}`);
+        }
+
+        return await response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 async function addEmployee(){
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
@@ -59,6 +78,12 @@ async function addEmployee(){
     showEmployees();
 }
 
+async function deleteEmployee(id) {
+    let employeeId = Number(id);
+
+    await deleteEmployeeFromDB(employeeId);
+    await showEmployees();
+}
 
 async function showEmployees(){
     let employees = await getEmployees();
@@ -74,7 +99,9 @@ async function showEmployees(){
                 <li>Name: ${employee.name}</li>
                 <li>Email: ${employee.email}</li>
                 <li>Salary: ${employee.salary}</li>
-            </ul>`
+            </ul>
+            <button onclick="deleteEmployee(${employee.employeeId})">Delete Employee</button>
+            `
 
         containerElement.appendChild(employeeList);
         
