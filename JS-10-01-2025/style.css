@@ -26,6 +26,10 @@
     gap:10px;
     justify-self: center;
     margin: 20px;
+    background-color: seagreen;
+    padding: 30px;
+    border: none;
+    border-radius: 10px;
 }
 
 .formContainer input{
@@ -48,6 +52,43 @@
 }
 
 .formContainer button:hover{
+    background-color: rgb(23, 43, 60);
+    transform: translateY(-2px);
+}
+
+.SearchByID{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    gap:10px;
+    justify-self: center;
+    margin: 20px;
+    background-color: seagreen;
+    padding: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+.SearchByID input{
+    padding: 5px;
+    border-radius: 5px;
+    width: 15vw;
+    outline: none;
+    border: 1px solid rgba(0,0,0,0.30);
+}
+
+.SearchByID button{
+    padding: 5px;
+    width: 15vw;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: steelblue;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+.SearchByID button:hover{
     background-color: rgb(23, 43, 60);
     transform: translateY(-2px);
 }

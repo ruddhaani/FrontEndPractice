@@ -18,7 +18,18 @@
         <label for="salary">Enter salary: </label>
         <input type="number" name="salary" id="salary">
 
+        <label for="search">Search: </label>
+        <input type="text" name="search" id="search" oninput="searchWithName()">
+
         <button onclick="addEmployee()">Add Employee</button>
+        
+    </div>
+
+    <div class="SearchByID">
+        <label for="searchById">Enter Employee ID: </label>
+        <input type="text" name="searchById" id="searchById">
+
+        <button onclick="showEmployeeById()">Search Employee By Id</button>
     </div>
     
     <div class="container">
