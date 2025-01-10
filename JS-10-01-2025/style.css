@@ -1,0 +1,53 @@
+.container{
+    width: 30vw;
+    background-color: bisque;
+    padding: 10px;
+    justify-self: center;
+}
+
+.EmployeeList{
+    justify-self: center;
+    background-color: teal;
+    padding: 10px;
+    margin: 10px;
+    width: 20vw;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.EmployeeList ul{
+    list-style: none;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    gap:10px;
+    justify-self: center;
+    margin: 20px;
+}
+
+.formContainer input{
+    padding: 5px;
+    border-radius: 5px;
+    width: 15vw;
+    outline: none;
+    border: 1px solid rgba(0,0,0,0.30);
+}
+
+.formContainer button{
+    padding: 5px;
+    width: 15vw;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: steelblue;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+.formContainer button:hover{
+    background-color: rgb(23, 43, 60);
+    transform: translateY(-2px);
+}
