@@ -106,7 +106,7 @@ async function addEmployee() {
     let email = document.getElementById("email").value;
     let salary = Number(document.getElementById("salary").value);
 
-    if (name === "" || email === "" || salary <= 0) {
+    if (name === "" && email === "" && salary <= 0) {
         alert("Please add valid data");
         return;
     }
