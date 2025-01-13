@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plantify</title>
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Import Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Configure Tailwind CSS
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              exo: ["'Exo 2'", "sans-serif"], // Add 'Exo 2' font
+              poppins: ["Poppins", "sans-serif"], // Add 'Poppins' font
+              roboto: ["Roboto", "sans-serif"], // Add 'Roboto' font
+              logo: ["Emilys Candy", "sans-serif"],
+            },
+            colors: {
+              clifford: "#da373d",
+              logo: "#3E7B27",
+              LightGreen: "#ADFF00",
+              greySecondaryText : "#707070"
+            },
+
+            backgroundImage: {
+              "hero-pattern": "url('./resources/images/hero-pattern.png')",
+            },
+
+            height: {
+              128: "32rem",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <!-- Navbar  -->
+    <div
+      class="bg-black font-exo text-white text-center flex justify-center h-8 items-center text-xs fixed top-0 w-screen"
+    >
+      <p>
+        Get early access on launches and offers.
+        <span class="underline cursor-pointer">Sign Up Now!</span>
+      </p>
+    </div>
+
+    <div
+      class="flex font-exo bg-white justify-between px-16 shadow-sm items-center h-12 w-full md:justify-between lg:justify-between fixed top-8"
+    >
+      <div class="hidden lg:block w-5/12">
+        <ul class="lg:flex gap-8 text-sm">
+          <li class="cursor-pointer">Home</li>
+          <li class="cursor-pointer">Products</li>
+          <li class="cursor-pointer">About Us</li>
+          <li class="cursor-pointer">Contact Us</li>
+        </ul>
+      </div>
+
+      <div class="w-1/12 cursor-pointer">
+        <h2 class="font-logo text-2xl text-logo text-center">Plantify</h2>
+      </div>
+
+      <div class="cursor-pointer self-center mt-1 lg:hidden">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 1H17M1 6H17M1 11H17"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <div class="hidden lg:flex gap-8 self-center w-5/12 justify-end">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 16 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13 17C14.1046 17 15.0454 16.0899 14.7951 15.0141C14.1723 12.338 12.0897 11 8 11C3.91032 11 1.8277 12.338 1.20492 15.0141C0.954552 16.0899 1.89543 17 3 17H13Z"
+            stroke="#123524"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8 8C10 8 11 7 11 4.5C11 2 10 1 8 1C6 1 5 2 5 4.5C5 7 6 8 8 8Z"
+            stroke="#123524"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.5 3H17.2768C18.0446 3 18.526 3.82948 18.1451 4.49614L15.5758 8.99228C15.2198 9.61543 14.5571 10 13.8394 10H7M7 10L5.45625 12.47C5.03997 13.136 5.51881 14 6.30425 14H17M7 10L3.05279 2.10557C2.714 1.428 2.02148 1 1.26393 1H1M7 18C7 18.5523 6.55228 19 6 19C5.44772 19 5 18.5523 5 18C5 17.4477 5.44772 17 6 17C6.55228 17 7 17.4477 7 18ZM17 18C17 18.5523 16.5523 19 16 19C15.4477 19 15 18.5523 15 18C15 17.4477 15.4477 17 16 17C16.5523 17 17 17.4477 17 18Z"
+            stroke="#123524"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class= "flex min-w-screen pt-20">
+      <div class="flex flex-col min-h-[91.4vh] w-full lg:w-1/3 px-1">
+      <div class="w-20 h-20 bg-LightGreen self-center flex justify-center p-1 rounded-full mt-[5vh]">
+        <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="self-center">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0378 3.25961C11.3776 3.25961 7.63943 6.94123 7.63943 11.4346C7.63943 12.2267 6.99208 12.8687 6.19354 12.8687C5.395 12.8687 4.74765 12.2267 4.74765 11.4346C4.74765 5.31405 9.8243 0.391357 16.0378 0.391357C22.2512 0.391357 27.3279 5.31405 27.3279 11.4346C27.3279 12.2267 26.6805 12.8687 25.882 12.8687C25.0834 12.8687 24.4361 12.2267 24.4361 11.4346C24.4361 6.94123 20.6979 3.25961 16.0378 3.25961Z" fill="#283232"/>
+          <path d="M27.8281 18.8756L28.2965 15.218C28.4828 13.7631 28.5759 13.0357 28.1586 12.5658C27.7412 12.0959 27.0019 12.0959 25.5234 12.0959H6.5555C5.07696 12.0959 4.33768 12.0959 3.92031 12.5658C3.50294 13.0357 3.59609 13.7631 3.7824 15.218L4.25079 18.8756C4.84192 23.4918 5.13749 25.7998 6.72182 27.1843C8.30615 28.5688 10.6518 28.5688 15.3432 28.5688H16.7357C21.4271 28.5688 23.7727 28.5688 25.3571 27.1843C26.9414 25.7998 27.237 23.4918 27.8281 18.8757V18.8756Z" fill="#283232"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48849 11.0562C6.51095 11.0562 6.53349 11.0562 6.55609 11.0562L25.5916 11.0562C26.2726 11.0561 26.8899 11.056 27.3852 11.125C27.9265 11.2004 28.5022 11.3792 28.9457 11.8785C29.3892 12.3777 29.4955 12.9667 29.5027 13.5088C29.5093 14.005 29.4314 14.6123 29.3455 15.2824L28.8594 19.0785C28.5717 21.3256 28.3431 23.1108 27.9805 24.502C27.6067 25.9365 27.0603 27.0821 26.0506 27.9644C25.041 28.8467 23.8263 29.24 22.3445 29.4271C20.9074 29.6085 19.093 29.6085 16.8093 29.6085H15.2707C12.987 29.6085 11.1727 29.6085 9.73561 29.4271C8.25378 29.24 7.03909 28.8467 6.02944 27.9644C5.01978 27.0821 4.47334 25.9365 4.09953 24.502C3.737 23.1108 3.5084 21.3256 3.22067 19.0785L2.74307 15.3489C2.74022 15.3267 2.73738 15.3045 2.73454 15.2824C2.64866 14.6123 2.57081 14.005 2.57738 13.5088C2.58456 12.9667 2.69086 12.3777 3.13435 11.8785C3.57784 11.3792 4.15354 11.2004 4.69482 11.125C5.19019 11.056 5.80746 11.0561 6.48849 11.0562ZM4.70773 13.2534C4.71045 13.2518 4.71552 13.2491 4.7237 13.2455C4.75717 13.2309 4.83297 13.2056 4.98629 13.1843C5.31818 13.1381 5.78531 13.1356 6.55609 13.1356H25.524C26.2948 13.1356 26.7619 13.1381 27.0938 13.1843C27.2471 13.2056 27.3229 13.2309 27.3564 13.2455C27.3645 13.2491 27.3696 13.2518 27.3723 13.2534C27.3736 13.2562 27.3756 13.2616 27.3782 13.2701C27.3886 13.3048 27.4043 13.3826 27.4063 13.5362C27.4107 13.8685 27.3543 14.3285 27.2572 15.0869L26.7888 18.7446C26.786 18.7664 26.7832 18.7881 26.7804 18.8098C26.4857 21.1106 26.2729 22.7451 25.9507 23.9816C25.6329 25.2013 25.2394 25.9019 24.6647 26.4041C24.09 26.9063 23.3397 27.2052 22.0798 27.3642C20.7904 27.527 19.1095 27.529 16.7363 27.529H15.3438C12.9705 27.529 11.2897 27.527 10.0003 27.3642C8.74036 27.2052 7.99005 26.9063 7.41537 26.4041C6.84069 25.9019 6.4472 25.2013 6.12936 23.9816C5.80409 22.7334 5.59033 21.0798 5.29129 18.7446L4.8229 15.0869C4.72578 14.3285 4.66934 13.8685 4.67374 13.5362C4.67578 13.3826 4.69147 13.3048 4.7019 13.2701C4.70444 13.2616 4.7065 13.2562 4.70773 13.2534ZM27.3747 13.2548C27.3747 13.2548 27.3747 13.2548 27.3747 13.2548V13.2548Z" fill="#283232"/>
+          <g filter="url(#filter0_d_1_2021)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.490997 11.6182C0.490997 10.8262 1.13834 10.1841 1.93689 10.1841H30.0632C30.8618 10.1841 31.5091 10.8262 31.5091 11.6182C31.5091 12.4103 30.8618 13.0523 30.0632 13.0523H1.93689C1.13834 13.0523 0.490997 12.4103 0.490997 11.6182Z" fill="#283232"/>
+          </g>
+          <defs>
+          <filter id="filter0_d_1_2021" x="0.181037" y="9.71914" width="31.638" height="3.48808" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset dy="-0.15498"/>
+          <feGaussianBlur stdDeviation="0.15498"/>
+          <feComposite in2="hardAlpha" operator="out"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2021"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2021" result="shape"/>
+          </filter>
+          </defs>
+          </svg>
+        </div>
+
+        <div class="self-center mt-5 mb-5">
+          <h2 class="font-exo text-2xl text-center font-semibold self-center">
+            Welcome Back!
+          </h2>
+          <p class="text-center text-greySecondaryText mb-5">Welcome back! Please  enter your details.</p>
+        </div>
+        <hr class="mb-5 lg:hidden">
+        <div class="flex flex-col gap-4 p-3">
+          <label for="" class="font-exo text-lg">Email<span class="text-red-400">*</span></label>
+          <input type="text" class="border rounded-lg h-18 p-2">
+        </div>
+
+        <div class="flex flex-col gap-2 p-3">
+          <label for="" class="font-exo text-lg">Password<span class="text-red-400">*</span></label>
+          <input type="password" class="border rounded-lg h-18 p-2">
+        </div>
+
+        <div class="flex justify-between items-center mb-5 p-3">
+          <div class="flex items-center">
+          <input type="checkbox" class="border rounded-lg h-18 mx-1 h-10 w-4">
+          <label for="" class="font-exo text-md">Remember for 30 days</label>
+        </div>
+          <p class="underline underline-offset-2 text-md content-center cursor-pointer">Forgot Password</p>
+        </div>
+
+        <div class="flex justify-center mt-5 mb-5">
+          <button class="bg-LightGreen w-11/12 p-3 rounded-xl text-lg font-exo font-semibold">Login</button>
+        </div>
+
+        <p class="self-center text-center font-semibold text-xl mb-2">Don't have an account? <span class="text-logo underline underline-offset-8 cursor-pointer transition ease-in-out hover:text-clifford duration-300">Sign Up</span></p>
+      </div>
+
+      <div class="h-[91.4vh] self-center w-2/3 px-12 py-10 hidden lg:block">
+        <img src="./resources/images/login-banner.png" alt="" class="h-full w-full self-center object-cover rounded-3xl">
+      </div>
+    </div>
+      
+  </body>
+</html>
+
+
+   

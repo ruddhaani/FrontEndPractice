@@ -2,9 +2,9 @@ let apiEndPoint = "http://localhost:5036/api/Employees/";
 
 let containerElement = document.querySelector(".container");
 
-async function getEmployees() {
+async function getEmployees(searchText = null , pageNumber = 1 , pageSize = 2) {
     try {
-        const response = await fetch(`${apiEndPoint}`);
+        const response = await fetch(`${apiEndPoint}?SearchText=${searchText}&PageNumber=${pageNumber}&PageSize=${pageSize}`);
 
         if (!response.ok) {
             throw new Error(`Failed to fetch Employee: ${response.status}`);
@@ -126,16 +126,13 @@ async function deleteEmployee(id) {
     showEmployees();
 }
 
-async function showEmployees(searchText = "", id = -1, index = -1) {
-    let employees = await getEmployees();
+async function showEmployees(searchText = null, id = -1, index = -1 , pageNumber = 1, pageSize = 2) {
+    let employees = await getEmployees(searchText , pageNumber , pageSize);
 
     containerElement.innerHTML = "";
     for (var emp in employees) {
         let employee = employees[emp];
-
-        if (employee.name.toLowerCase().search(searchText.toLowerCase()) == -1) {
-            continue;
-        }
+        
 
         if (id > 0 && employee.employeeId != id) {
             continue;
@@ -188,16 +185,16 @@ async function showEmployeeById() {
     document.getElementById('searchById').value = "";
 }
 
-async function updateEmployee(index, flag , id) {
-    if(flag == 0){
-        await showEmployees("" , -1 , index);
-        console.log(index); 
-    }else{
+async function updateEmployee(index, flag, id) {
+    if (flag == 0) {
+        await showEmployees("", -1, index);
+        console.log(index);
+    } else {
         let _name = document.getElementById("UpdatedName").value;
-        let _email = document.getElementById("UpdatedEmail").value;  
+        let _email = document.getElementById("UpdatedEmail").value;
         let _salary = Number(document.getElementById("UpdatedSalary").value);
-        
-        await updateEmployeeInDB(id , _name , _email , _salary);
+
+        await updateEmployeeInDB(id, _name, _email, _salary);
         showEmployees();
     }
 }
