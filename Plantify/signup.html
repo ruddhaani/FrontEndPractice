@@ -168,28 +168,30 @@
         </div>
         <hr class="mb-5 lg:hidden">
         <div class="flex flex-col gap-2 p-3">
-          <label for="emailLogin" class="font-exo text-lg">Email<span class="text-red-400">*</span></label>
-          <input type="text" id="emailLogin" name="emailLogin" class="border rounded-lg h-18 p-2">
+          <label for="nameSignup" class="font-exo text-lg">Name<span class="text-red-400">*</span></label>
+          <input type="text" id="nameSignup" name="nameSignup" class="border rounded-lg h-18 p-2">
         </div>
 
         <div class="flex flex-col gap-2 p-3">
-          <label for="passwordLogin" class="font-exo text-lg">Password<span class="text-red-400">*</span></label>
-          <input type="password" id="passwordLogin" name="passwordLogin" class="border rounded-lg h-18 p-2">
+          <label for="emailSignup" class="font-exo text-lg">Email<span class="text-red-400">*</span></label>
+          <input type="text" id="emailSignup" name="emailSignup" class="border rounded-lg h-18 p-2">
         </div>
 
-        <div class="flex justify-between items-center mb-5 p-3">
-          <div class="flex items-center">
-          <input type="checkbox" class="border rounded-lg h-18 mx-1 h-10 w-4">
-          <label for="" class="font-exo text-md">Remember for 30 days</label>
-        </div>
-          <p class="underline underline-offset-2 text-md content-center cursor-pointer transition ease-in-out delay-100 hover:text-clifford duration-500">Forgot Password</p>
-        </div>
+        <div class="flex flex-col gap-2 p-3">
+            <label for="phoneSignup" class="font-exo text-lg">Phone<span class="text-red-400">*</span></label>
+            <input type="text" id="phoneSignup" name="phoneSignup" class="border rounded-lg h-18 p-2">
+          </div>
+
+          <div class="flex flex-col gap-2 p-3">
+            <label for="passwordSignup" class="font-exo text-lg">Password<span class="text-red-400">*</span></label>
+            <input type="password" id="passwordSignup" name="passwordSignup" class="border rounded-lg h-18 p-2">
+          </div>
 
         <div class="flex justify-center mt-5 mb-5">
-          <button class="bg-LightGreen w-11/12 p-3 rounded-xl text-lg font-exo font-semibold transition ease-in-out delay-100 hover:translate-y-[-0.8rem] duration-500" id="loginSubmitButton" onclick="Login()">Login</button>
+          <button class="bg-LightGreen w-11/12 p-3 rounded-xl text-lg font-exo font-semibold transition ease-in-out delay-100 hover:translate-y-[-0.8rem] duration-500" id="loginSubmitButton" onclick="SignUp()">Sign Up</button>
         </div>
 
-        <p class="self-center text-center font-semibold text-xl mb-2">Don't have an account? <span class="text-logo underline underline-offset-8 cursor-pointer transition ease-in-out hover:text-clifford duration-300"><a href="signup.html">Sign Up</a></span></p>
+        <p class="self-center text-center font-semibold text-xl mb-2">Already, have an account? <span class="text-logo underline underline-offset-8 cursor-pointer transition ease-in-out hover:text-clifford duration-300"><a href="login.html">Login</a></span></p>
       </div>
 
       <div class="h-[91.4vh] self-center w-2/3 px-12 py-10 hidden lg:block">
@@ -197,7 +199,7 @@
       </div>
     </div>
       
-    <script src="./resources/js/login.js"></script>
+    <script src="./resources/js/signup.js"></script>
   </body>
 </html>
 

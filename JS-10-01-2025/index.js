@@ -2,10 +2,19 @@ let apiEndPoint = "http://localhost:5036/api/Employees/";
 
 let containerElement = document.querySelector(".container");
 
-async function getEmployees(searchText = null , pageNumber = 1 , pageSize = 2) {
+async function getEmployees(searchText = null, pageNumber = 1, pageSize = 2) {
     try {
-        const response = await fetch(`${apiEndPoint}?SearchText=${searchText}&PageNumber=${pageNumber}&PageSize=${pageSize}`);
+        const queryParams = new URLSearchParams({
+            PageNumber: pageNumber,
+            PageSize: pageSize,
+        });
 
+        if (searchText) {
+            queryParams.append("SearchText", searchText);
+        }
+
+        const response = await fetch(`${apiEndPoint}?${queryParams.toString()}`);
+        
         if (!response.ok) {
             throw new Error(`Failed to fetch Employee: ${response.status}`);
         }
@@ -13,9 +22,10 @@ async function getEmployees(searchText = null , pageNumber = 1 , pageSize = 2) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
+
 
 async function getEmployeesById(id) {
     try {
@@ -126,20 +136,19 @@ async function deleteEmployee(id) {
     showEmployees();
 }
 
-async function showEmployees(searchText = null, id = -1, index = -1 , pageNumber = 1, pageSize = 2) {
-    let employees = await getEmployees(searchText , pageNumber , pageSize);
+async function showEmployees(searchText = null, id = -1, index = -1, pageNumber = 1, pageSize = 2) {
+    let employees = await getEmployees(searchText, pageNumber, pageSize);
 
     containerElement.innerHTML = "";
     for (var emp in employees) {
         let employee = employees[emp];
-        
 
         if (id > 0 && employee.employeeId != id) {
             continue;
         }
 
         let employeeList = document.createElement("div");
-        employeeList.classList.add("EmployeeList")
+        employeeList.classList.add("EmployeeList");
         employeeList.innerHTML = `<ul>
                 <li>Employee Id: ${employee.employeeId}</li>                
                 <li>Name: ${employee.name}</li>
@@ -148,8 +157,8 @@ async function showEmployees(searchText = null, id = -1, index = -1 , pageNumber
             </ul>
             <button onclick="deleteEmployee(${employee.employeeId})">Delete Employee</button>
             <br>
-            <button onclick = "updateEmployee(${emp}, 0 ,${employee.employeeId})">Update Employee</button>
-            `
+            <button onclick="updateEmployee(${emp}, 0, ${employee.employeeId})">Update Employee</button>
+        `;
 
         if (index >= 0 && index < employees.length && index == emp) {
             employeeList.innerHTML = `<ul>
@@ -160,12 +169,11 @@ async function showEmployees(searchText = null, id = -1, index = -1 , pageNumber
             </ul>
             <button onclick="deleteEmployee(${employee.employeeId})">Delete Employee</button>
             <br>
-            <button onclick = "updateEmployee(${emp}, 1 ,${employee.employeeId})">Update Employee</button>
-            `
+            <button onclick="updateEmployee(${emp}, 1, ${employee.employeeId})">Update Employee</button>
+        `;
         }
 
         containerElement.appendChild(employeeList);
-
     }
 }
 

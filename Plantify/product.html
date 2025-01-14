@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plantify</title>
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Import Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />
+
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Configure Tailwind CSS
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              exo: ["'Exo 2'", "sans-serif"], // Add 'Exo 2' font
+              poppins: ["Poppins", "sans-serif"], // Add 'Poppins' font
+              roboto: ["Roboto", "sans-serif"], // Add 'Roboto' font
+              logo: ["Emilys Candy", "sans-serif"],
+            },
+            colors: {
+              clifford: "#da373d",
+              logo: "#3E7B27",
+              textSecondary: "#959595",
+              bodyPrimary: "#03312E",
+              textSecondaryGreen: "#C5EFCB",
+              lightBlue: "#C1DCDC",
+            },
+
+            backgroundImage: {
+              "hero-pattern": "url('./resources/images/hero-pattern.png')",
+            },
+
+            height: {
+              128: "32rem",
+            },
+          },
+        },
+      };
+    </script>
+
+  </head>
+  <body>
+    <!-- Navbar  -->
+    <div
+      class="bg-black font-exo text-white text-center z-[1000] flex justify-center h-8 items-center text-xs fixed top-0 w-screen navbar-custom"
+    >
+      <p>
+        Get early access on launches and offers.
+        <span class="underline cursor-pointer">Sign Up Now!</span>
+      </p>
+    </div>
+
+    <div
+      class="flex font-exo bg-white justify-between px-16 z-100 shadow-sm items-center h-12 w-full md:justify-between lg:justify-between fixed top-8"
+    >
+      <div class="hidden lg:block w-5/12">
+        <ul class="lg:flex gap-8 text-sm">
+          <li class="cursor-pointer">Home</li>
+          <li class="cursor-pointer">Products</li>
+          <li class="cursor-pointer">About Us</li>
+          <li class="cursor-pointer">Contact Us</li>
+        </ul>
+      </div>
+
+      <div class="w-1/12 cursor-pointer">
+        <h2 class="font-logo text-2xl text-logo text-center">Plantify</h2>
+      </div>
+
+      <div class="cursor-pointer self-center mt-1 lg:hidden">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 1H17M1 6H17M1 11H17"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <div class="hidden lg:flex gap-8 self-center w-5/12 justify-end">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 16 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13 17C14.1046 17 15.0454 16.0899 14.7951 15.0141C14.1723 12.338 12.0897 11 8 11C3.91032 11 1.8277 12.338 1.20492 15.0141C0.954552 16.0899 1.89543 17 3 17H13Z"
+            stroke="#123524"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8 8C10 8 11 7 11 4.5C11 2 10 1 8 1C6 1 5 2 5 4.5C5 7 6 8 8 8Z"
+            stroke="#123524"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.5 3H17.2768C18.0446 3 18.526 3.82948 18.1451 4.49614L15.5758 8.99228C15.2198 9.61543 14.5571 10 13.8394 10H7M7 10L5.45625 12.47C5.03997 13.136 5.51881 14 6.30425 14H17M7 10L3.05279 2.10557C2.714 1.428 2.02148 1 1.26393 1H1M7 18C7 18.5523 6.55228 19 6 19C5.44772 19 5 18.5523 5 18C5 17.4477 5.44772 17 6 17C6.55228 17 7 17.4477 7 18ZM17 18C17 18.5523 16.5523 19 16 19C15.4477 19 15 18.5523 15 18C15 17.4477 15.4477 17 16 17C16.5523 17 17 17.4477 17 18Z"
+            stroke="#123524"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Product Section  -->
+
+    <!-- Main Content -->
+<div class="mt-28 px-6 lg:px-16">
+
+    <!-- Search Box -->
+    <div class="flex justify-center mb-14">
+      <input
+        type="text"
+        placeholder="Search for products..."
+        class="w-full max-w-lg px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-logo focus:border-logo"
+      />
+    </div>
+  
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="productGrid">
+      <!-- Example Product Card -->
+      <div
+        class="border border-gray-200 rounded-md shadow-sm p-4 flex flex-col items-center bg-white hover:shadow-lg transition-shadow duration-200"
+      >
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8EnHUjAc4yqshKvXslQymEhFhxXSAd8XxTw&s"
+          alt="Product Image"
+          class="w-full h-80 object-cover rounded-md mb-4"
+        />
+        <h2 class="text-lg font-semibold mb-1">Product Name</h2>
+        <p class="text-sm text-gray-500 mb-2">Product ID: 12345</p>
+        <p class="text-lg font-bold text-logo mb-4">$25.00</p>
+        <div class="flex gap-4">
+          <button
+            class="px-4 py-2 bg-logo text-white rounded-md shadow-sm hover:bg-opacity-90 transition"
+          >
+            Add to Cart
+          </button>
+          <button
+            class="px-4 py-2 bg-bodyPrimary text-white rounded-md shadow-sm hover:bg-opacity-90 transition"
+          >
+            Buy Now
+          </button>
+        </div>
+      </div>
+      <!-- Repeat Product Cards -->
+       
+    </div>
+  </div>
+  
+  <script src="./resources/js/products.js"></script>
+  </body>
