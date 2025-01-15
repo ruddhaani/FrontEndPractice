@@ -15,6 +15,8 @@ async function ValidateToken() {
   return response.ok;
 }
 
+const paginationContainer = document.getElementById('paginationContainer');
+
 document.addEventListener("DOMContentLoaded", async () => {
   if (!(await ValidateToken())) {
       localStorage.clear();
@@ -24,27 +26,50 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 let products = [];
 
-async function GetProductsFromDb() {
-    try {
-        const response = await fetch('http://localhost:5189/api/Product');
+let totalPages;
 
-        if (!response.ok) {
-            throw new Error(`Some error: ${response.status}`)
+async function GetProductsFromDb(searchText = null, pageNumber = 1, pageSize = 8) {
+    try {
+        const queryParams = new URLSearchParams({
+            PageNumber: pageNumber,
+            PageSize: pageSize,
+        });
+
+        if (searchText) {
+            queryParams.append("SearchText", searchText);
         }
 
+        const response = await fetch(`http://localhost:5189/api/Product?${queryParams.toString()}`);
+
+        if (!response.ok) {
+            throw new Error(`Some error: ${response.status}`);
+        }
+
+        // Extract the total pages from the response headers
+        const totalPagesHeader = response.headers.get("X-TotalPages");
+        if (totalPagesHeader) {
+            totalPages = parseInt(totalPagesHeader, 10); // Convert to a number and store it
+        }
+
+        // Get the products from the response body
         products = await response.json();
-        console.log(products);
+
+        console.log("Products:", products);
+        console.log("Total Pages:", totalPages);
     } catch (error) {
         console.log(error);
     }
 }
 
+
 GetProductsFromDb();
 
-async function ShowProducts() {
+async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
     let productGrid = document.getElementById("productGrid");
     productGrid.innerHTML = ``;
-    await GetProductsFromDb();
+    paginationContainer.innerHTML = ``;
+    let currentPage = pageNumber;
+    await GetProductsFromDb(searchText , pageNumber , pageSize);
     for (let i in products) {
         let product = products[i];
         let cardElement = document.createElement("div");
@@ -88,6 +113,29 @@ async function ShowProducts() {
 
         productGrid.appendChild(cardElement);
     }
+
+    for(let i = 1; i <= totalPages ; i++){
+      const button = document.createElement('button');
+        button.textContent = i;
+        button.className = `
+          px-4 py-2 rounded-lg font-medium text-white transition 
+          ${i === currentPage ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 hover:bg-gray-500'} text-center
+          focus:outline-none focus:ring-2 focus:ring-blue-300
+        `;
+        button.addEventListener('click' , () => {
+          ShowProducts(searchText , i , pageSize);
+          console.log(i);
+        });
+        paginationContainer.appendChild(button);
+    }
 }
+
+async function SearchProduct(){
+  let searchBoxValue = document.getElementById("productSearchInput").value;
+  await ShowProducts(searchBoxValue , 1 , 8);
+}
+
+
+
 
 ShowProducts();
