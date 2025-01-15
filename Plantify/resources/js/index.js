@@ -1,40 +1,36 @@
-document.addEventListener("DOMContentLoaded", () => {
+async function ValidateToken() {
     const token = localStorage.getItem("authToken");
-
     if (!token) {
-        window.location.href = "login.html";
-        return;
+        return false; 
     }
-});
 
-async function fetchUserDetails(authToken) {
-    const apiUrl = "http://localhost:5189/api/User/me";
-    try {
-        const response = await fetch(apiUrl, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${authToken}`,
-                "Content-Type": "application/json"
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    const response = await fetch("http://localhost:5189/api/User/validate", {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
         }
+    });
 
-        const userData = await response.json();
-        console.log("User Details:", userData);
-    } catch (error) {
-        console.error("Failed to fetch user details:", error.message);
-    }
+    return response.ok;
 }
 
-// Call the function on page load
-document.addEventListener("DOMContentLoaded", () => {
-    const authToken = localStorage.getItem("authToken"); // Assuming you store the token in localStorage
-    if (authToken) {
-        fetchUserDetails(authToken);
-    } else {
-        console.log("No auth token found. Please log in.");
+document.addEventListener("DOMContentLoaded", async () => {
+    if (!(await ValidateToken())) {
+        localStorage.clear();
+        window.location.href = "login.html";
     }
 });
+
+
+function RedirectToProductsPage(){
+    console.log("clicked");
+    window.location.href = "product.html";
+}
+
+
+let buttonExplore = document.getElementById("exploreButton");
+
+buttonExplore.addEventListener("click" , ()=>{
+    RedirectToProductsPage();
+})
