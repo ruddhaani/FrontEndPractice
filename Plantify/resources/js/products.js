@@ -54,8 +54,6 @@ async function GetProductsFromDb(searchText = null, pageNumber = 1, pageSize = 8
         // Get the products from the response body
         products = await response.json();
 
-        console.log("Products:", products);
-        console.log("Total Pages:", totalPages);
     } catch (error) {
         console.log(error);
     }
@@ -63,6 +61,27 @@ async function GetProductsFromDb(searchText = null, pageNumber = 1, pageSize = 8
 
 
 GetProductsFromDb();
+
+async function addToCart(productId){
+  try {
+    let token = localStorage.getItem("authToken");
+    const response = await fetch(`http://localhost:5189/api/Cart?productId=${productId}` , {
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${token}`
+       }
+    });
+
+    if(!response.ok){
+      throw new Error(`${response.status}`);
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
     let productGrid = document.getElementById("productGrid");
@@ -75,19 +94,23 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
         let cardElement = document.createElement("div");
 
         cardElement.classList.add(
-            "border",
-            "border-gray-200",
-            "rounded-md",
-            "shadow-sm",
-            "p-4",
-            "flex",
-            "flex-col",
-            "items-center",
-            "bg-white",
-            "hover:shadow-lg",
-            "transition-shadow",
-            "duration-200"
-        );
+          "border",
+          "border-gray-200",
+          "rounded-md",
+          "shadow-sm",
+          "p-4",
+          "flex",
+          "flex-col",
+          "items-center",
+          "bg-white",
+          "hover:shadow-2xl",       
+          "hover:scale-105",       
+          "hover:translate-y-[-4px]", 
+          "transition",
+          "ease-in-out",
+          "duration-300" 
+      );
+      
 
         cardElement.innerHTML = `
         <img
@@ -100,7 +123,7 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
         <p class="text-lg font-bold text-logo mb-4">₹${product.price}</p>
         <div class="flex gap-4">
           <button
-            class="px-4 py-2 bg-logo text-white rounded-md shadow-sm hover:bg-opacity-90 transition"
+            class="px-4 py-2 bg-logo text-white rounded-md shadow-sm hover:bg-opacity-90 transition" onclick="addToCart(${product.productId})"
           >
             Add to Cart
           </button>
