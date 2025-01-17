@@ -94,23 +94,19 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
         let cardElement = document.createElement("div");
 
         cardElement.classList.add(
-          "border",
-          "border-gray-200",
-          "rounded-md",
-          "shadow-sm",
-          "p-4",
-          "flex",
-          "flex-col",
-          "items-center",
-          "bg-white",
-          "hover:shadow-2xl",       
-          "hover:scale-105",       
-          "hover:translate-y-[-4px]", 
-          "transition",
-          "ease-in-out",
-          "duration-300" 
-      );
-      
+            "border",
+            "border-gray-200",
+            "rounded-md",
+            "shadow-sm",
+            "p-4",
+            "flex",
+            "flex-col",
+            "items-center",
+            "bg-white",
+            "hover:shadow-lg",
+            "transition-shadow",
+            "duration-200"
+        );
 
         cardElement.innerHTML = `
         <img
