@@ -109,6 +109,7 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
         );
 
         cardElement.innerHTML = `
+        <a class = "flex flex-col p-4 items-center" href=product-details.html?productId=${product.productId}>
         <img
           src="${product.productImageUrl}"
           alt="Product Image"
@@ -128,7 +129,7 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
           >
             Explore
           </button>
-        </div>`;
+        </div> </a>`;
 
         productGrid.appendChild(cardElement);
     }
