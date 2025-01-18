@@ -22,6 +22,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+
+async function BuyProductDb(){
+    try {
+        let token = localStorage.getItem("authToken");
+        const response = await fetch("http://localhost:5189/api/Sales" , {
+            method : "POST",
+            headers : {
+                'Content-Type' : 'application/json',
+                'Authorization' : `Bearer ${token}`
+            }
+        });
+
+        if(!response.ok){
+            alert(`Something went wrong ${response.status}`);
+        }
+
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 async function UpdateQuantityInDb(productId , quantity){
     let token = localStorage.getItem("authToken")
     try{
@@ -136,5 +158,9 @@ async function ShowCartItems() {
     document.getElementById("totalP").innerHTML = `₹ ${total.toFixed(2)}`;
 }
 
+async function BuyProduct() {
+    await BuyProductDb();
+    await ShowCartItems();
+}
 
 ShowCartItems();

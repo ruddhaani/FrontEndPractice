@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 let user;
 
+function signOut(){
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+
 async function updateUserInDb(name, email, phone) {
   const token = localStorage.getItem("authToken");
   try {
@@ -146,10 +151,17 @@ async function showUserDetails(index = 0) {
         >
           Update Profile
         </button>
+
+        <button
+      class="bg-red-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-red-600 transition font-poppins w-full sm:w-auto" onclick="signOut()"
+    >
+    Sign Out
+    </button>
+
         <button
           class="bg-gray-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-600 transition font-poppins w-full sm:w-auto"
         >
-          History
+          <a href="history.html">History</a>
         </button>
       </div>`;
 
@@ -215,7 +227,7 @@ async function showUserDetails(index = 0) {
   <button
     class="bg-gray-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-gray-600 transition font-poppins w-full sm:w-auto"
   >
-    History
+    <a href="history.html">History</a>
   </button>
 </div>
 `;
@@ -285,10 +297,11 @@ async function showUserDetails(index = 0) {
     >
       Update Profile
     </button>
+
     <button
       class="bg-gray-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-gray-600 transition font-poppins w-full sm:w-auto"
     >
-      History
+      <a href="history.html">History</a>
     </button>
   </div>
   `;
