@@ -126,7 +126,7 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
           <button
             class="px-4 py-2 bg-bodyPrimary text-white rounded-md shadow-sm hover:bg-opacity-90 transition"
           >
-            Buy Now
+            Explore
           </button>
         </div>`;
 
