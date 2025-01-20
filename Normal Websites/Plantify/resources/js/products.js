@@ -109,12 +109,15 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
         );
 
         cardElement.innerHTML = `
-        <a class = "flex flex-col p-4 items-center" href=product-details.html?productId=${product.productId}>
+        <div class = "flex flex-col p-4 items-center">
+
+        <a href=product-details.html?productId=${product.productId}>
         <img
           src="${product.productImageUrl}"
           alt="Product Image"
           class="w-full h-80 object-cover rounded-md mb-4"
         />
+        </a>
         <h2 class="text-lg font-semibold mb-1">${product.productName}</h2>
         <p class="text-sm text-gray-500 mb-2">Product Type: ${product.productType}</p>
         <p class="text-lg font-bold text-logo mb-4">₹${product.price}</p>
@@ -127,9 +130,11 @@ async function ShowProducts(searchText = null , pageNumber = 1 , pageSize = 8) {
           <button
             class="px-4 py-2 bg-bodyPrimary text-white rounded-md shadow-sm hover:bg-opacity-90 transition"
           >
+          <a href=product-details.html?productId=${product.productId}>
             Explore
+          </a>
           </button>
-        </div> </a>`;
+        </div> </div>`;
 
         productGrid.appendChild(cardElement);
     }
