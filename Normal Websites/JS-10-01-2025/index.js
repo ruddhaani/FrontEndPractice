@@ -1,4 +1,4 @@
-let apiEndPoint = "http://localhost:5036/api/Employees/";
+    let apiEndPoint = "http://localhost:5036/api/Employees/";
 
 let totalPages = 0;
 
@@ -25,8 +25,6 @@ async function getEmployees(searchText = null, pageNumber = 1, pageSize = 2) {
         }
 
         const data = await response.json();
-
-
         return data;
     } catch (error) {
         console.error(error);
@@ -180,7 +178,7 @@ async function showEmployees(searchText = null, id = -1, index = -1, pageNumber 
         `;
         }
 
-        containerElement.appendChild(employeeList);
+            
     }
 
     for(let i = 1 ; i <= totalPages ; i++){
