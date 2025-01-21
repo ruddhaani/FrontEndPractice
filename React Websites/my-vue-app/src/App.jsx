@@ -21,6 +21,7 @@ function App() {
     "email" :  "snehal@gmail.com",
     "salary" : 10000
   }
+
   return (
     <>
     <Navbar />
