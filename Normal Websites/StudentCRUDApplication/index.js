@@ -1,5 +1,6 @@
 let students = [];
 let totalPages = 0;
+let totalCount = 0;
 
 let baseUrl = "http://localhost:5152/api/Student";
 
@@ -25,6 +26,8 @@ async function LoadStudentsFromDb(searchText = null , pageNumber = 1 , pageSize 
         students = await response.json();
 
         totalPages = await response.headers.get('X-Total-Pages');
+        totalCount = await response.headers.get('X-Total-Count');
+
         console.log(totalPages);
         console.log(students);
     } catch (error) {
@@ -113,6 +116,8 @@ async function ShowStudents(searchText = null , pageNumber = 1 , pageSize = 2 , 
             <th>Actions</th>
         </tr>`;
 
+    let currentPage = pageNumber;
+
     for(i in students){
         let student = students[i];
 
@@ -121,15 +126,16 @@ async function ShowStudents(searchText = null , pageNumber = 1 , pageSize = 2 , 
             <td>${student.name}</td>
             <td>${student.email}</td>
             <td>${student.department}</td>
-            <td><button onclick="UpdateStudent(${searchText}, ${pageNumber} , ${pageSize} , 0 ,${student.studentId})">Update</button> <button onclick="DeleteStudent(${student.studentId})">Delete</button></td>`;
+            <td><button onclick="UpdateStudent(${searchText}, ${pageNumber} , ${pageSize} , 0 ,${student.studentId})">Update</button> <button onclick="DeleteStudent(${searchText}, ${currentPage} , ${pageSize} ,${student.studentId})">Delete</button></td>`;
 
         if(id >= 0 && id == student.studentId){
             innerHTMLString = `<td><input type="number" name="updated-id" id="updated-id" value="${student.studentId}" readonly></td>
             <td><input type="text" name="updated-name" id="updated-name" value="${student.name}"></td>
             <td><input type="text" name="updated-email" id="updated-email" value="${student.email}"></td>
             <td><input type="text" name="updated-department" id="updated-department" value="${student.department}"></td>
-            <td><button onclick="UpdateStudent(${searchText}, ${pageNumber} , ${pageSize} ,1,${student.studentId})">Update</button> <button onclick="DeleteStudent(${student.studentId})">Delete</button></td>`;
+            <td><button onclick="UpdateStudent(${searchText}, ${pageNumber} , ${pageSize} ,1,${student.studentId})">Update</button> <button onclick="DeleteStudent(${searchText}, ${currentPage} , ${pageSize}${student.studentId})">Delete</button></td>`;
         }
+
 
         tableRowElement.innerHTML = innerHTMLString;
 
@@ -150,9 +156,17 @@ async function ShowStudents(searchText = null , pageNumber = 1 , pageSize = 2 , 
     }
 }
 
-async function  DeleteStudent(id) {
+async function  DeleteStudent(searchText , pageNumber , pageSize ,id) {
     await DeleteStudentFromDb(id);
-    await ShowStudents()
+    totalCount--;
+
+    const remainingItemsOnPage = totalCount - (pageNumber - 1) * pageSize;
+
+    if (remainingItemsOnPage <= 0 && pageNumber > 1) {
+        pageNumber--;
+    }
+
+    await ShowStudents(searchText , pageNumber , pageSize)
 }
 
 async function AddStudent() {
