@@ -1,20 +1,53 @@
 import React from 'react'
 
-function Table({employee2}) {
+function Table({employees}) {
+
+  let arr = [];
+
+  for (let key in employees[0]){
+    arr.push(key)
+  }
+
   return (
     <table>
-        <tr>
+        {/* <tr>
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
             <th>Salary</th>
-        </tr>
+        </tr> */}
+        
+        {/* {employees.map((employee) => {
+            return (
+              <tr>
+                <td>{employee.id}</td>
+                <td>{employee.name}</td>
+                <td>{employee.email}</td>
+                <td>{employee.salary}</td>
+              </tr>
+            );
+        })} */}
+
         <tr>
-            <td>{employee2.id}</td>
-            <td>{employee2.name}</td>
-            <td>{employee2.email}</td>
-            <td>{employee2.salary}</td>
+        {
+          arr.map((keyValue) => {
+            return (
+              <th>{keyValue}</th>
+            )
+          })
+        }
         </tr>
+
+        {employees.map((employee) => (
+                  
+                      <tr>
+                        <td>{employee.id}</td>
+                        <td>{employee.name}</td>
+                        <td>{employee.email}</td>
+                        <td>{employee.salary}</td>
+                      </tr>
+      
+                ))}
     </table>
   )
 }

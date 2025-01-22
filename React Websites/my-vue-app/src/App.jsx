@@ -4,28 +4,34 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './assets/Navbar'
 import Table from './components/Table'
+import Counter from './components/Counter'
+import { Voting } from './components/Voting'
 
 function App() {
   // const [count, setCount] = useState(0)
 
-  let employee1 = {
+  let employeeList = [{
     "id" : 1,
     "name" : "Ani",
     "email" :  "ramaneaniruddh22@gmail.com",
     "salary" : 10000
-  }
-
-  let employee2 = {
+  }, {
     "id" : 2,
     "name" : "Snehal",
     "email" :  "snehal@gmail.com",
     "salary" : 10000
-  }
+  }];
+
+
 
   return (
     <>
     <Navbar />
-    <Table employee = {employee1} employee2 = {employee2}/>
+
+    <Table employees={employeeList} />
+
+    <Counter />
+    <Voting />
     </>
   )
 }
