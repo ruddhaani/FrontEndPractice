@@ -2,11 +2,11 @@ import React from 'react'
 
 function Table({employees}) {
 
-  let arr = [];
+  // let arr = [];
 
-  for (let key in employees[0]){
-    arr.push(key)
-  }
+  // for (let key in employees[0]){
+  //   arr.push(key)
+  // }
 
   return (
     <table>
@@ -30,11 +30,15 @@ function Table({employees}) {
 
         <tr>
         {
-          arr.map((keyValue) => {
-            return (
-              <th>{keyValue}</th>
-            )
-          })
+          // arr.map((keyValue) => {
+          //   return (
+          //     <th>{keyValue}</th>
+          //   )
+          // })
+
+          Object.keys(employees[0]).map((key) => (
+              <th>{key}</th>
+          ))
         }
         </tr>
 
