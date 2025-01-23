@@ -11,7 +11,6 @@ const Table = ({list}) => {
             })}
         </tr>
 
-        <tbody>
         {list.map((item) => (
           <tr>
             {Object.keys(item).map((key) => (
@@ -19,7 +18,6 @@ const Table = ({list}) => {
             ))}
           </tr>
         ))}
-        </tbody>
     </table>
   )
 }
