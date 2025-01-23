@@ -1,6 +1,10 @@
 import React from 'react'
 
 const Table = ({list}) => {
+
+  if(!list[0]){
+    return <div>No data found</div>
+  }
   return (
     <table>
         <tr>

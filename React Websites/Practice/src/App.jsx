@@ -7,7 +7,8 @@ import Counter from './components/Counter'
 import Table from './components/Table'
 
 function App() {
-  let employeeList = [{
+  let employeeList = [
+    {
     'name' : 'Aniruddha',
     'email' : 'ramaneaniruddh22@gmail.com',
     'department' : 'HR',
@@ -17,7 +18,8 @@ function App() {
     'email' : 'sejal@gmail.com',
     'department' : 'IT',
     'id' : 2
-  }];
+  }
+];
 
   // let studentList = [{
   //   'name' : 'Ani',
