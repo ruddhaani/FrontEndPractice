@@ -5,6 +5,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Counter from './components/Counter'
 import Table from './components/Table'
+import EmployeeTable from './components/EmployeeTable'
 
 function App() {
   let employeeList = [
@@ -37,9 +38,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Counter />
-      <Table list = {employeeList}/>
-      {/* <Table list = {studentList}/> */}
+      <EmployeeTable />
     </>
   )
 }
