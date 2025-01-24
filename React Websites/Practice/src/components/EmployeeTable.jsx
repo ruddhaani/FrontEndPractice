@@ -67,7 +67,6 @@ const EmployeeTable = () => {
 
     
     fetchData(pageNumber);
-    
   }
 
   async function handlePageChange(e){
