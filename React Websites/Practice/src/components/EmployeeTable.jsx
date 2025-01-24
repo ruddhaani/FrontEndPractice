@@ -13,54 +13,85 @@ const EmployeeTable = () => {
   });
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(
-          "http://localhost:5152/api/Student?PageNumber=1&PageSize=2"
-        );
-        const paginatedData = await response.json();
-        setEmployeeList(paginatedData);
-        setTotalPages(response.headers.get("X-Total-Pages"));
-        setTotalCount(response.headers.get("X-Total-Count"));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-
     fetchData();
   }, []);
+
+  async function fetchData() {
+    try {
+      const response = await fetch(
+        "http://localhost:5152/api/Student?PageNumber=1&PageSize=2"
+      );
+      const paginatedData = await response.json();
+      setEmployeeList(paginatedData);
+      setTotalPages(response.headers.get("X-Total-Pages"));
+      setTotalCount(response.headers.get("X-Total-Count"));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
 
   let paginationArray = [];
   for (let i = 1; i <= totalPages; i++) {
     paginationArray.push(i);
   }
 
+  async function handleSubmit(e){
+    e.preventDefault();
+    const response = await fetch('http://localhost:5152/api/Student' , {
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      body : JSON.stringify(createStudentFormData)
+    })
+
+    if(!response.ok){
+      console.log(response.status);
+    }
+
+    await fetchData();
+  }
+
+  function handleChange(e){
+    setCreateStudentFormData({...createStudentFormData, [e.target.name] : e.target.value})
+  }
+
+  async function deleteStudent(studentId) {
+    const response = await fetch(`http://localhost:5152/api/Student/${studentId}` , {
+      method : 'DELETE',
+    })
+
+    if(!response.ok){
+      console.log(response.status);
+    }
+
+    fetchData();
+  }
+
   return (
     <div>
       <div>
         <br />
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
-              name=""
+              name="name"
               id="studentName"
               placeholder="Name"
-              onChange={(event) => {
-                setCreateStudentFormData({...createStudentFormData, 'name' : event.target.value});
-                console.log(createStudentFormData);
-              }}
+              onChange={handleChange}
             />
           </div>
           <div>
-            <input type="email" name="" id="studentEmail" placeholder="Email" />
+            <input type="email" name="email" id="studentEmail" placeholder="Email" onChange={handleChange} />
           </div>
           <div>
             <input
               type="text"
-              name=""
+              name="department"
               id="studentDepartment"
               placeholder="Department"
+              onChange={handleChange}
             />
           </div>
           <br />
@@ -88,7 +119,9 @@ const EmployeeTable = () => {
               <td>{employee.email}</td>
               <td>{employee.department}</td>
               <td>
-                <button>Update</button> <button>Delete</button>
+                <button>Update</button> <button onClick={()=>{
+                  deleteStudent(employee.studentId)
+                }}>Delete</button>
               </td>
             </tr>
           ))}
