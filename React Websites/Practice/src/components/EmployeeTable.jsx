@@ -4,7 +4,7 @@ const EmployeeTable = () => {
   const [employeeList, setEmployeeList] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [PageSize, setPageSize] = useState(2);
+  const [pageSize, setPageSize] = useState(2);
   const [totalCount, setTotalCount] = useState(0);
   const [createStudentFormData, setCreateStudentFormData] = useState({
     name: "",
@@ -16,10 +16,10 @@ const EmployeeTable = () => {
     fetchData();
   }, []);
 
-  async function fetchData() {
+  async function fetchData(pageNumber = 1 , pageSize = 2) {
     try {
       const response = await fetch(
-        "http://localhost:5152/api/Student?PageNumber=1&PageSize=2"
+        `http://localhost:5152/api/Student?PageNumber=${pageNumber}&PageSize=${pageSize}`
       );
       const paginatedData = await response.json();
       setEmployeeList(paginatedData);
@@ -49,7 +49,7 @@ const EmployeeTable = () => {
       console.log(response.status);
     }
 
-    await fetchData();
+    await fetchData(pageNumber);
   }
 
   function handleChange(e){
@@ -65,7 +65,15 @@ const EmployeeTable = () => {
       console.log(response.status);
     }
 
-    fetchData();
+    
+    fetchData(pageNumber);
+    
+  }
+
+  async function handlePageChange(e){
+      console.log(e.target.innerText);
+      await fetchData(e.target.innerText);
+      setPageNumber(e.target.innerText);
   }
 
   return (
@@ -130,7 +138,7 @@ const EmployeeTable = () => {
 
       <div>
         {paginationArray.map((page) => {
-          return <button>{page}</button>;
+          return <button onClick={handlePageChange}>{page}</button>;
         })}
       </div>
     </div>
