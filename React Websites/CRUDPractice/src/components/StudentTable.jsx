@@ -100,7 +100,6 @@ const StudentTable = () => {
       });
 
       await getStudentData(pageNumber);
-
     } catch (error) {
       console.log(error);
     }
@@ -215,37 +214,48 @@ const StudentTable = () => {
                 ) : (
                   <td>{student.department}</td>
                 )}
-                {
-                  updateCondition ? <td><button onClick={() => {handleUpdate(student.studentId)}}> Update </button> <button
-                  onClick={() => {
-                    deleteStudent(student.studentId);
-                  }}
-                >
-                  Delete
-                </button></td> :  <td>
-                  <button
-                    onClick={() => {
-                      setUpdateStudentFlag(true);
-                      setUpdateStudentId(student.studentId);
-                      setUpdateStudentData({
-                        name: student.name,
-                        email: student.email,
-                        department: student.department,
-                      });
-                    }}
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => {
-                      deleteStudent(student.studentId);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </td>
-                }
-                
+                {updateCondition ? (
+                  <td>
+                    <button
+                      onClick={() => {
+                        handleUpdate(student.studentId);
+                      }}
+                    >
+                      {" "}
+                      Update{" "}
+                    </button>{" "}
+                    <button
+                      onClick={() => {
+                        deleteStudent(student.studentId);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                ) : (
+                  <td>
+                    <button
+                      onClick={() => {
+                        setUpdateStudentFlag(true);
+                        setUpdateStudentId(student.studentId);
+                        setUpdateStudentData({
+                          name: student.name,
+                          email: student.email,
+                          department: student.department,
+                        });
+                      }}
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => {
+                        deleteStudent(student.studentId);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                )}
               </tr>
             );
           })}
@@ -267,5 +277,5 @@ const StudentTable = () => {
     </>
   );
 };
-
+ 
 export default StudentTable;
