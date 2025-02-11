@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { Event } from '@angular/router';
-import { every } from 'rxjs';
+import { Component, EventEmitter, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-counter',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css'
 })
@@ -15,7 +14,10 @@ export class CounterComponent {
     this.count++;
   }
 
-  
+  handleInput(e : Event){
+      console.log(e);
+      this.count = Number((e.target as HTMLInputElement).value);
+  }
 }
 
 function convertToNumber(value: string){

@@ -3,5 +3,7 @@
     <!-- This is called interpolation -->
      {{count}}
      <button (click)="incrementByOne()">Increment by One</button>
-     <input type="number" name="count" id="count" [value]="count" (input)="">
+     <!-- <input type="number" name="count" id="count" [value]="count" (input)="handleInput($event)" > -->
+     <input type="number" name="count" id="count" [(ngModel)]="count">
+
 </div>
