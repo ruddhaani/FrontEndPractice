@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Event } from '@angular/router';
+import { every } from 'rxjs';
 
 @Component({
   selector: 'app-counter',
@@ -7,9 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './counter.component.css'
 })
 export class CounterComponent {
-    count : number = 0;
+  @Input() count : number = 0;
 
-    incrementByOne(){
-      this.count++;
-    }
+  incrementByOne(){
+    this.count++;
+  }
+
+  
+}
+
+function convertToNumber(value: string){
+  return Number(value);
 }

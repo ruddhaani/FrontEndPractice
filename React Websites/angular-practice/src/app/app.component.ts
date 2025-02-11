@@ -6,11 +6,12 @@ import { CounterComponent } from './components/counter/counter.component';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    CounterComponent  
+    CounterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'angular-practice';
+  count : number = 2;
 }

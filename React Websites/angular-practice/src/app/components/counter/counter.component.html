@@ -1,6 +1,7 @@
+<p>counter works!</p>
 <div>
-    <h2>
-        {{count}}
-    </h2>
-    <button (click)="incrementByOne()">Increment by 1</button>
+    <!-- This is called interpolation -->
+     {{count}}
+     <button (click)="incrementByOne()">Increment by One</button>
+     <input type="number" name="count" id="count" [value]="count" (input)="">
 </div>
