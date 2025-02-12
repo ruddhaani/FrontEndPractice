@@ -1,0 +1,55 @@
+
+<div>
+    <form action="" (submit)="createEmployee()">
+    <div>
+        <label for="name">
+            Enter Name
+        </label>
+        <input type="text" name="name" id="name" [(ngModel)]="createEmployeeFormData.name">
+    </div>
+    <div>
+        <label for="email">
+            Enter Email
+        </label>
+        <input type="email" name="email" id="email" [(ngModel)]="createEmployeeFormData.email">
+    </div>
+    <div>
+        <label for="">
+            Enter Salary
+        </label>
+        <input type="number" name="salary" id="salary" [(ngModel)]="createEmployeeFormData.salary">
+    </div>
+    <div>
+        <input type="submit" value="Add Employee">
+    </div>
+</form>
+</div>
+
+<table>
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Email Address</th>
+        <th>Salary</th>
+        <th>Actions</th>
+    </tr>
+
+    @for(employee of employees; track employee.id){
+        <tr>
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.salary}}</td>
+            <td>
+                <button>Update</button>
+                <button (click)="deleteEmployee(employee.id)">Delete</button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+     @for(page of pagesArray; track page){
+        <button (click)="handlePagination(page)">{{page}}</button>
+     }   
+</div>
