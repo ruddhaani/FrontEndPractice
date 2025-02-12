@@ -22,6 +22,8 @@ export class EmployeeTableComponent {
   isUpdating: boolean = false;
   pagesArray : any[] = [];
   createEmployeeFormData : Employee = new Employee();
+  updateEmployeeFormData: Employee = new Employee();
+  flag : number = 0;
 
   // works like useEffect with empty dependency array i.e useEffect(() => {} , []); works while initializing the variables(first render).
   async ngOnInit() {
@@ -49,6 +51,36 @@ export class EmployeeTableComponent {
       // console.log(this.totalPages);
     }
   }
+
+  //Update Employee
+
+  async handleUpdate(flag: number , employee:Employee){
+    if(flag == 0){
+      this.isUpdating = true;
+      this.updateEmployeeId = employee.id;
+      this.updateEmployeeFormData.id =  employee.id;
+      this.updateEmployeeFormData.name = employee.name;
+      this.updateEmployeeFormData.salary = employee.salary;
+      this.updateEmployeeFormData.email = employee.email;
+    }
+    else{
+      const response = await fetch(`http://localhost:5248/api/Employee/${this.updateEmployeeId}` , {
+        method : "PUT",
+        headers : {
+          "Content-Type" : "application/json", 
+        },
+        body : JSON.stringify(this.updateEmployeeFormData)
+      });
+
+      if(response.ok){
+        this.updateEmployeeId = -1;
+        this.isUpdating = false;
+        this.updateEmployeeFormData = new Employee();
+        await this.fetchData();
+      }
+    }
+  }
+
 
   //Delete Employee
   async deleteEmployee(id: number){

@@ -1,28 +1,27 @@
-
 <div>
     <form action="" (submit)="createEmployee()">
-    <div>
-        <label for="name">
-            Enter Name
-        </label>
-        <input type="text" name="name" id="name" [(ngModel)]="createEmployeeFormData.name">
-    </div>
-    <div>
-        <label for="email">
-            Enter Email
-        </label>
-        <input type="email" name="email" id="email" [(ngModel)]="createEmployeeFormData.email">
-    </div>
-    <div>
-        <label for="">
-            Enter Salary
-        </label>
-        <input type="number" name="salary" id="salary" [(ngModel)]="createEmployeeFormData.salary">
-    </div>
-    <div>
-        <input type="submit" value="Add Employee">
-    </div>
-</form>
+        <div>
+            <label for="name">
+                Enter Name
+            </label>
+            <input type="text" name="name" id="name" [(ngModel)]="createEmployeeFormData.name">
+        </div>
+        <div>
+            <label for="email">
+                Enter Email
+            </label>
+            <input type="email" name="email" id="email" [(ngModel)]="createEmployeeFormData.email">
+        </div>
+        <div>
+            <label for="">
+                Enter Salary
+            </label>
+            <input type="number" name="salary" id="salary" [(ngModel)]="createEmployeeFormData.salary">
+        </div>
+        <div>
+            <input type="submit" value="Add Employee">
+        </div>
+    </form>
 </div>
 
 <table>
@@ -35,21 +34,35 @@
     </tr>
 
     @for(employee of employees; track employee.id){
-        <tr>
-            <td>{{employee.id}}</td>
-            <td>{{employee.name}}</td>
-            <td>{{employee.email}}</td>
-            <td>{{employee.salary}}</td>
-            <td>
-                <button>Update</button>
-                <button (click)="deleteEmployee(employee.id)">Delete</button>
-            </td>
-        </tr>
+    @if(isUpdating == true && updateEmployeeId == employee.id){
+    <tr>
+        <td>{{employee.id}}</td>
+        <td><input type="text" name="name" id="name" [(ngModel)]="updateEmployeeFormData.name"></td>
+        <td><input type="email" name="email" id="email" [(ngModel)]="updateEmployeeFormData.email"></td>
+        <td><input type="number" name="salary" id="salary" [(ngModel)]="updateEmployeeFormData.salary"></td>
+        <td>
+            <button (click)="handleUpdate(1 , employee)">Update</button>
+            <button (click)="deleteEmployee(employee.id)">Delete</button>
+        </td>
+    </tr>
+    }
+    @else{
+    <tr>
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.salary}}</td>
+        <td>
+            <button (click)="handleUpdate(0 , employee)">Update</button>
+            <button (click)="deleteEmployee(employee.id)">Delete</button>
+        </td>
+    </tr>
+    }
     }
 </table>
 
 <div>
-     @for(page of pagesArray; track page){
-        <button (click)="handlePagination(page)">{{page}}</button>
-     }   
+    @for(page of pagesArray; track page){
+    <button (click)="handlePagination(page)">{{page}}</button>
+    }
 </div>
