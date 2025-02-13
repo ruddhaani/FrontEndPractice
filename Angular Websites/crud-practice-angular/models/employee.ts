@@ -5,6 +5,5 @@ export class Employee{
     salary : number = 0;
 
     constructor(){
-
     }
 }
