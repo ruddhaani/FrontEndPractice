@@ -23,7 +23,6 @@ export class EmployeeTableComponent {
   pagesArray : any[] = [];
   createEmployeeFormData : Employee = new Employee();
   updateEmployeeFormData: Employee = new Employee();
-  flag : number = 0;
 
   // works like useEffect with empty dependency array i.e useEffect(() => {} , []); works while initializing the variables(first render).
   async ngOnInit() {
