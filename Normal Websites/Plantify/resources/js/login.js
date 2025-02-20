@@ -8,7 +8,7 @@ async function loginDB(email, password) {
             body: JSON.stringify({ email, password }),
         });
 
-        if (!response.ok) {
+        if (!response.ok) { 
             confirm("Username and Password do not match. Kindly try again!");
             location.reload();
             return;
