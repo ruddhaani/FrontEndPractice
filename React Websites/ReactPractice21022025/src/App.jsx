@@ -4,6 +4,7 @@ import Home from "./components/Home"
 import About from "./components/About"
 import { RouterProvider } from "react-router-dom"
 import Stopwatch from "./components/Stopwatch"
+import Counter from "./components/Counter"
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
         {
           "path" : "stopwatch",
           "element" :  <Stopwatch />
+        },
+        {
+          "path" : "counter",
+          "element" : <Counter />
         }
       ]
     }
