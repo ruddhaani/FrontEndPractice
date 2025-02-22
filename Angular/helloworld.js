@@ -45,8 +45,7 @@ function Component(metadata) {
 }
 function Input(metadata) {
     function InputDecorator(target, property) {
-        console.log("This class is component class");
-        console.log(metadata.selector);
+        console.log(property);
     }
     return InputDecorator;
 }
@@ -60,8 +59,13 @@ var Employee = function () {
     var _classDescriptor;
     var _classExtraInitializers = [];
     var _classThis;
+    var _name_decorators;
+    var _name_initializers = [];
+    var _name_extraInitializers = [];
     var Employee = _classThis = /** @class */ (function () {
         function Employee_1(employeeId, name, email, salary) {
+            this.name = __runInitializers(this, _name_initializers, void 0);
+            this.email = __runInitializers(this, _name_extraInitializers);
             this.employeeId = employeeId;
             this.name = name;
             this.email = email;
@@ -73,6 +77,10 @@ var Employee = function () {
     __setFunctionName(_classThis, "Employee");
     (function () {
         var _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+        _name_decorators = [Input({
+                "greeting": "Hello"
+            })];
+        __esDecorate(null, null, _name_decorators, { kind: "field", name: "name", static: false, private: false, access: { has: function (obj) { return "name" in obj; }, get: function (obj) { return obj.name; }, set: function (obj, value) { obj.name = value; } }, metadata: _metadata }, _name_initializers, _name_extraInitializers);
         __esDecorate(null, _classDescriptor = { value: _classThis }, _classDecorators, { kind: "class", name: _classThis.name, metadata: _metadata }, null, _classExtraInitializers);
         Employee = _classThis = _classDescriptor.value;
         if (_metadata) Object.defineProperty(_classThis, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });

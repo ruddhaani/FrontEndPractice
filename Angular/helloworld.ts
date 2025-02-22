@@ -8,9 +8,8 @@ function Component(metadata : any){
 }
 
 function Input(metadata : any){
-    function InputDecorator(target : Function , property:number){
-        console.log("This class is component class");
-        console.log(metadata.selector);
+    function InputDecorator(target : any , property:any){
+        console.log(property);
     }
 
     return InputDecorator;
@@ -30,6 +29,9 @@ function Input(metadata : any){
 })
 class Employee{
     employeeId: number;
+    @Input ({
+        "greeting" : "Hello"
+    }) 
     name : string;
     email : string;
     salary: number;
