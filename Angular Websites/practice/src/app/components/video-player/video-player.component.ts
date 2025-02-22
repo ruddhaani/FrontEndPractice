@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './video-player.component.css'
 })
 export class VideoPlayerComponent {
-
+  
 }
