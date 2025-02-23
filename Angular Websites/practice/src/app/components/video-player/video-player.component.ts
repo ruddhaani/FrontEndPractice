@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { VideoDetails } from '../../modules/VideoDetails';
 
 @Component({
   selector: 'app-video-player',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './video-player.component.css'
 })
 export class VideoPlayerComponent {
-  
+  @Input() videoDetails : VideoDetails = new VideoDetails("" , "" , "" , "");
 }

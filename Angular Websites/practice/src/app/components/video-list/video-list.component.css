@@ -1,0 +1,9 @@
+.cardList{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.active-card{
+    color: red;
+}

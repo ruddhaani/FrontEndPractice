@@ -8,5 +8,5 @@ import { VideoDetails } from '../../modules/VideoDetails';
   styleUrl: './video.component.css'
 })
 export class VideoComponent {
-  @Input() videoDetails : VideoDetails = new VideoDetails();
+  @Input() videoDetails : VideoDetails = new VideoDetails("","","","");
 }
