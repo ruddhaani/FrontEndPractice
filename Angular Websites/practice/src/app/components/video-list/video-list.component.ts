@@ -3,6 +3,7 @@ import { VideoDetails } from '../../modules/VideoDetails';
 import { VideoComponent } from '../video/video.component';
 import { CommonModule } from '@angular/common';
 import { VideoPlayerComponent } from '../video-player/video-player.component';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 @Component({
   selector: 'app-video-list',
@@ -10,6 +11,7 @@ import { VideoPlayerComponent } from '../video-player/video-player.component';
     VideoComponent,
     CommonModule,  //ngFor , ngIf is in this module.
     VideoPlayerComponent,
+    HighlightDirective
   ],
   templateUrl: './video-list.component.html',
   styleUrl: './video-list.component.css'

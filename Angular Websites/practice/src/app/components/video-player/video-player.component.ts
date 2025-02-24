@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, SimpleChange, SimpleChanges, viewChild, ViewChild } from '@angular/core';
 import { VideoDetails } from '../../modules/VideoDetails';
 
 @Component({
@@ -9,4 +9,11 @@ import { VideoDetails } from '../../modules/VideoDetails';
 })
 export class VideoPlayerComponent {
   @Input() videoDetails : VideoDetails = new VideoDetails("" , "" , "" , "");
+  @ViewChild("video1") videoElementRef !: ElementRef;
+
+  ngOnChanges(changes : SimpleChanges){
+    if(changes["videoDetails"]){
+      this.videoElementRef?.nativeElement.load();
+    }
+  }
 }

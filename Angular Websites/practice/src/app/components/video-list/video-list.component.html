@@ -1,7 +1,13 @@
 <app-video-player *ngIf="playVideoFlag" [videoDetails]="playableVideo"></app-video-player>
 
 <div [ngClass]="{'cardList' : true}">
-<app-video *ngFor="let video of videoList" [ngClass]="{'active-card' : video.title == playableVideo.title}" [videoDetails]="video" (click)="handleVideoClick(video)">
+<app-video *ngFor="let video of videoList" 
+[ngClass]="{'active-card' : video.title == playableVideo.title}" 
+[videoDetails]="video" 
+(click)="handleVideoClick(video)"
+[ngStyle]="{'background-color' : video.title == playableVideo.title ? 'yellow' : 'white' }"
+appHighlight
+>
     
 </app-video>
 </div>
