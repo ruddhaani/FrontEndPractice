@@ -27,6 +27,15 @@ export class EmployeeComponent {
     setTimeout(() => {
       observable.next("Geeta");
     }, 4000)
+
+    //once error is emitted no further data is emmited
+    // setTimeout(()=>{
+    //   observable.error("Error");
+    // } , 2500)
+
+    setTimeout(() => {
+      observable.complete();
+    }, 3500);
   });
 
   ngOnInit() {
@@ -35,11 +44,11 @@ export class EmployeeComponent {
         console.log(data);
         this.employees.push(data);
       },
-      "error": () => {
-
+      "error": (error: any) => {
+        console.log(error);
       },
       "complete": () => {
-
+        console.log("completed");
       }
     });
   }
