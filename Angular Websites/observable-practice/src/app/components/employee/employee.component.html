@@ -1,3 +1,24 @@
-<div *ngFor="let employee of employees">
-    {{employee}}
-</div>
+<app-create-employee></app-create-employee>
+<table>
+    <tr>
+        <th>Employee Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let employee of employees">
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.salary}}</td>
+        <td>
+            <button>Edit</button>
+            <button>Delete</button>
+        </td>
+    </tr>
+</table>
+
+<button *ngFor="let page of (totalPages | array)">
+    {{page}}
+</button>

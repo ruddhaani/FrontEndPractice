@@ -1,0 +1,7 @@
+<p>create-employee works!</p>
+<form (submit)="createEmployee()">
+    <input type="text" [(ngModel)]="CreateEmployeeFormData.name" name="name">
+    <input type="email" [(ngModel)]="CreateEmployeeFormData.email" name="email">
+    <input type="number" [(ngModel)]="CreateEmployeeFormData.salary" name="salary">
+    <input type="submit" value="Add" name="submit">
+</form>
