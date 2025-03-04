@@ -19,6 +19,6 @@
     </tr>
 </table>
 
-<button *ngFor="let page of (totalPages | array)">
+<button *ngFor="let page of (totalPages | array)" (click)="onChangePage(page)">
     {{page}}
 </button>

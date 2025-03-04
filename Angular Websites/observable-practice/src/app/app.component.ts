@@ -7,7 +7,6 @@ import { CreateEmployeeComponent } from './components/create-employee/create-emp
   selector: 'app-root',
   imports: [RouterOutlet , 
     EmployeeComponent,
-    CreateEmployeeComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

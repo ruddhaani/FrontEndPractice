@@ -71,6 +71,15 @@ export class EmployeeComponent {
   totalPages: number = 0;
 
   ngOnInit(){
+    this.loadEmployees();
+  }
+
+  onChangePage(page : number){
+    this.pageNumber = page;
+    this.loadEmployees();
+  }
+
+  loadEmployees(){
     this.getEmployees();
     this.employeeService.paginatedData$.subscribe({
       "next" : (paginatedData : any) => {
@@ -87,7 +96,7 @@ export class EmployeeComponent {
         console.log("All employees fetched")
       }
       
-    })
+    });
   }
 
   getEmployees(){

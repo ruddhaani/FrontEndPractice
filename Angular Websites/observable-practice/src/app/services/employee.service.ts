@@ -11,7 +11,9 @@ export class EmployeeService {
 
   private readonly BASE_URL:string = "http://localhost:5248/api/Employee";
 
-  paginatedDataSubject : PeronalitySubject<HttpResponse<any>> = new PeronalitySubject<HttpResponse<any>>(new HttpResponse());
+  // paginatedDataSubject : PeronalitySubject<HttpResponse<any>> = new PeronalitySubject<HttpResponse<any>>(new HttpResponse());
+  paginatedDataSubject : BehaviorSubject<HttpResponse<any>> = new BehaviorSubject<HttpResponse<any>>(new HttpResponse());
+
   paginatedData$ : Observable<HttpResponse<any>> = this.paginatedDataSubject.asObservable();
 
   constructor(private http: HttpClient) {}
