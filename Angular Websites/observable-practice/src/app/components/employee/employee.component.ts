@@ -72,10 +72,7 @@ export class EmployeeComponent {
 
   ngOnInit(){
     this.getEmployees();
-  }
-
-  getEmployees(){
-    this.employeeService.getEmployees(this.pageNumber , this.pageSize , this.searchText).subscribe({
+    this.employeeService.paginatedData$.subscribe({
       "next" : (paginatedData : any) => {
           this.employees = paginatedData.body;
           this.totalCount = paginatedData.headers.get("X-Total-Count");
@@ -91,5 +88,9 @@ export class EmployeeComponent {
       }
       
     })
+  }
+
+  getEmployees(){
+    this.employeeService.getEmployees(this.pageNumber , this.pageSize , this.searchText)
   }
 }

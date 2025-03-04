@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
@@ -13,29 +13,29 @@ import { HttpResponse } from '@angular/common/http';
   styleUrl: './create-employee.component.css'
 })
 export class CreateEmployeeComponent {
-    CreateEmployeeFormData : Employee = new Employee(-1 , "" , "" , 0);
-    @Input() pageNumber : number = 1;
-    @Input() pageSize : number = 2;
-    @Input() searchText : string = "";
+  CreateEmployeeFormData: Employee = new Employee(-1, "", "", 0);
+  @Output() onEmployeeCreation: EventEmitter<null> = new EventEmitter();
 
-    constructor(private employeeService:EmployeeService){
+  constructor(private employeeService: EmployeeService) {
 
-    }
+  }
 
-    createEmployee(){
-      this.employeeService.createEmployee(this.CreateEmployeeFormData).subscribe({
-        "next" : (response: HttpResponse<Employee>) => {
-          console.log(response.body);
-        },
-        "error" : (error : Error) => {
-            console.log(error);
-        },
-        "complete" : () => {
-          console.log("all data received");
-        }
-      });
+  createEmployee() {
+    this.employeeService.createEmployee(this.CreateEmployeeFormData).subscribe({
+      "next": (response: HttpResponse<Employee>) => {
+        console.log(response.body);
+      },
+      "error": (error: Error) => {
+        console.log(error);
+      },
+      "complete": () => {
+        console.log("all data received");
+        this.onEmployeeCreation.emit(null);
+        this.CreateEmployeeFormData = new Employee(-1,"" ,"" , 0);
+      }
+    });
 
-      this.employeeService.getEmployees(this.pageNumber , this.pageSize , this.searchText);
+    // this.employeeService.getEmployees(this.pageNumber , this.pageSize , this.searchText);
 
-    }
+  }
 }
