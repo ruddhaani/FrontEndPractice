@@ -1,0 +1,6 @@
+<form (submit)="handleSubmit()">
+<input type="text" [(ngModel)]="createEmployeeFormData.name" name="name"/>
+<input type="text" [(ngModel)]="createEmployeeFormData.email" name="email"/>
+<input type="number" [(ngModel)]="createEmployeeFormData.salary" name="salary"/>
+<input type="submit" value="Add" name="submit"/>
+</form>

@@ -1,0 +1,25 @@
+<app-create-employee (onEmployeeCreation)="fetchEmployees()"></app-create-employee>
+
+<div>
+    <table>
+        <tr>
+            <th>Employee Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salar</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let emp of employee">
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.salary}}</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <button *ngFor="let page of (totalPages | pageArray)">
+        {{totalPages}}
+        {{page}}
+    </button>
+</div>
