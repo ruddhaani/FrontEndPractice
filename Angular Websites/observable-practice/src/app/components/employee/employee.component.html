@@ -8,14 +8,25 @@
         <th>Actions</th>
     </tr>
     <tr *ngFor="let employee of employees">
-        <td>{{employee.id}}</td>
-        <td>{{employee.name}}</td>
-        <td>{{employee.email}}</td>
-        <td>{{employee.salary}}</td>
-        <td>
-            <button>Edit</button>
+        <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">{{employee.id}}</td>
+        <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">{{employee.name}}</td>
+        <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">{{employee.email}}</td>
+        <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">{{employee.salary}}</td>
+        <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">
+            <button (click)="showUpdateEmployeeForm(employee)">Edit</button>
             <button>Delete</button>
         </td>
+
+        <form action="" *ngIf="updateEmployeeFlag && employee.id == updateEmployeeId" [formGroup]="updateEmployeeForm" (ngSubmit)="updateEmployee()">
+        <td>{{employee.id}}</td>
+        <td><input type="text" name="name" formControlName="name">{{employee.name}}</td>
+        <td><input type="email" name="email" formControlName="email">{{employee.email}}</td>
+        <td><input type="number" name="salary" formControlName="salary">{{employee.salary}}</td>
+        <td>
+            <button type="submit">Edit</button>
+            <button>Delete</button>
+        </td>
+    </form>
     </tr>
 </table>
 

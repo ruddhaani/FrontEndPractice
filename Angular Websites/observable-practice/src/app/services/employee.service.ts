@@ -38,4 +38,16 @@ export class EmployeeService {
       }
     })
   }
+
+  updateEmployee(employeeid: number , employee : Employee) : Observable<HttpResponse<any>>{
+    return this.http.put(`${this.BASE_URL}/${employeeid}` , employee , {
+      observe : 'response'
+    });
+  }
+
+  deleteEmployee(employeeid: number): Observable<HttpResponse<any>>{
+    return this.http.delete(`${this.BASE_URL}/${employeeid}` , {
+      observe : 'response'
+    });
+  }
 }

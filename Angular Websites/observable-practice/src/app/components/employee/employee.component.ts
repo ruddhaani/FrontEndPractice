@@ -3,16 +3,18 @@ import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ArrayPipe } from '../../pipes/array.pipe';
 import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
   imports: [
     CommonModule,
     ArrayPipe,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
@@ -69,6 +71,13 @@ export class EmployeeComponent {
   searchText : string = "";
   totalCount : number = 0;
   totalPages: number = 0;
+  updateEmployeeFlag : boolean = false;
+  updateEmployeeId : number = -1;
+  updateEmployeeForm : FormGroup = new FormGroup({
+    "name" : new FormControl("",[]),
+    "email" : new FormControl("" , []),
+    "salary" : new FormControl(0 , [])
+  });
 
   ngOnInit(){
     this.loadEmployees();
@@ -101,5 +110,28 @@ export class EmployeeComponent {
 
   getEmployees(){
     this.employeeService.getEmployees(this.pageNumber , this.pageSize , this.searchText)
+  }
+
+  updateEmployee(){
+    this.employeeService.updateEmployee(this.updateEmployeeId , this.updateEmployeeForm.value).subscribe({
+      next: (response: HttpResponse<any>) => {
+        console.log(response.status);
+      },
+      error : (error : HttpErrorResponse) => {
+        console.log(error)
+      },
+      complete : () => {
+        this.updateEmployeeFlag = false;
+        this.updateEmployeeId = -1;
+      }
+    });
+  }
+
+  showUpdateEmployeeForm(employee : Employee){
+    this.updateEmployeeId = employee.id;
+    this.updateEmployeeFlag = true;
+    this.updateEmployeeForm.value.name = employee.name;
+    this.updateEmployeeForm.value.email = employee.email;
+    this.updateEmployeeForm.value.salary = employee.salary;
   }
 }
