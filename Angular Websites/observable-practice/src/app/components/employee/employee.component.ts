@@ -3,17 +3,18 @@ import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ArrayPipe } from '../../pipes/array.pipe';
 import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
   imports: [
     CommonModule,
     ArrayPipe,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
@@ -63,51 +64,92 @@ export class EmployeeComponent {
   //   });
   // }
 
-  employeeService : EmployeeService = inject(EmployeeService);
-  employees : Employee [] = [];
+  employeeService: EmployeeService = inject(EmployeeService);
+  employees: Employee[] = [];
   pageNumber: number = 1;
-  pageSize : number = 2;
-  searchText : string = "";
-  totalCount : number = 0;
+  pageSize: number = 2;
+  searchText: string = "";
+  totalCount: number = 0;
   totalPages: number = 0;
-  updateEmployeeFlag : boolean = false;
-  updateEmployeeId : number = -1;
-  updateEmployeeFormData : FormGroup = new FormGroup({
-    "name" : new FormControl("" , [Validators.required]),
-    "email" : new FormControl("" , [Validators.required]),
-    "salary" : new FormControl(0 , [Validators.required])
+  updateEmployeeFlag: boolean = false;
+  updateEmployeeId: number = -1;
+  updateEmployeeFormData: FormGroup = new FormGroup({
+    "name": new FormControl("", [Validators.required, Validators.minLength(4)]),
+    "email": new FormControl("", [Validators.required]),
+    "salary": new FormControl(0, [Validators.required])
   });
 
-  ngOnInit(){
+  ngOnInit() {
     this.loadEmployees();
   }
 
-  onChangePage(page : number){
+  onChangePage(page: number) {
     this.pageNumber = page;
     this.loadEmployees();
   }
 
-  loadEmployees(){
+  loadEmployees() {
     this.getEmployees();
     this.employeeService.paginatedData$.subscribe({
-      "next" : (paginatedData : any) => {
-          this.employees = paginatedData.body;
-          this.totalCount = paginatedData.headers.get("X-Total-Count");
-          this.totalPages = paginatedData.headers.get("X-Total-Pages");
-          console.log(this.totalCount , this.totalPages , this.employees);
+      "next": (paginatedData: any) => {
+        this.employees = paginatedData.body;
+        this.totalCount = paginatedData.headers.get("X-Total-Count");
+        this.totalPages = paginatedData.headers.get("X-Total-Pages");
+        console.log(this.totalCount, this.totalPages, this.employees);
       },
-      "error" : (error : HttpErrorResponse) => {
+      "error": (error: HttpErrorResponse) => {
         console.log(error);
       },
 
-      "complete" : () => {
+      "complete": () => {
         console.log("All employees fetched")
       }
-      
+
     });
   }
 
-  getEmployees(){
-    this.employeeService.getEmployees(this.pageNumber , this.pageSize , this.searchText)
+  getEmployees() {
+    this.employeeService.getEmployees(this.pageNumber, this.pageSize, this.searchText)
   }
+
+  showUpdateEmployeeFlag(employee: Employee) {
+    // Close the form if clicked again
+    if (this.updateEmployeeId === employee.id) {
+      this.updateEmployeeId = -1;
+      this.updateEmployeeFlag = false;
+      return;
+    }
+  
+    this.updateEmployeeId = employee.id;
+    this.updateEmployeeFlag = true;
+  
+    this.updateEmployeeFormData.setValue({
+      name: employee.name,
+      email: employee.email,
+      salary: employee.salary
+    });
+  }
+  
+
+  updateEmployee() {
+    this.employeeService.updateEmployees(this.updateEmployeeId, this.updateEmployeeFormData.value)
+      .subscribe({
+        next: (response: HttpResponse<any>) => {
+          console.log(response.status);
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log(error);
+        },
+        complete: () => {
+          // Reset form and flags
+          this.updateEmployeeFormData.reset();
+          this.updateEmployeeId = -1;
+          this.updateEmployeeFlag = false;
+          
+          // Refresh employee list
+          this.loadEmployees();
+        }
+      });
+  }
+  
 }

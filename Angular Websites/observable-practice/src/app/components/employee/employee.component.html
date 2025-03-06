@@ -1,24 +1,56 @@
+<!-- <div *ngFor="let employee of employees">
+    {{employee}}
+</div> -->
 <app-create-employee (onEmployeeCreation)="getEmployees()"></app-create-employee>
-<table>
-    <tr>
-        <th>Employee Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Salary</th>
-        <th>Actions</th>
-    </tr>
-    <tr *ngFor="let employee of employees">
-        <td>{{employee.id}}</td>
-        <td>{{employee.name}}</td>
-        <td>{{employee.email}}</td>
-        <td>{{employee.salary}}</td>
-        <td>
-            <button>Edit</button>
-            <button>Delete</button>
-        </td>
-    </tr>
-</table>
+    <form [formGroup]="updateEmployeeFormData" (ngSubmit)="updateEmployee()">
+        <table>
+            <tr>
+                <th>Employeee Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let employee of employees">
+                <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">
+                    {{employee.id}}</td>
+                <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">
+                    {{employee.name}}</td>
+                <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">
+                    {{employee.email}}</td>
+                <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">
+                    {{employee.salary}}</td>
+                <td *ngIf="!(updateEmployeeFlag && employee.id == updateEmployeeId)">
+                    <button type="button" (click)="showUpdateEmployeeFlag(employee)">Update</button>
+                    <button type="button">Delete</button>
+                </td>
 
-<button *ngFor="let page of (totalPages | array)" (click)="onChangePage(page)">
-    {{page}}
-</button>
+                <td *ngIf="updateEmployeeFlag && employee.id == updateEmployeeId">
+                    {{employee.id}}
+                </td>
+                <td *ngIf="updateEmployeeFlag && employee.id == updateEmployeeId">
+                    <input type="text" name="name" formControlName="name">
+                    <div *ngIf="updateEmployeeFormData.get('name')?.invalid && 
+                        updateEmployeeFormData.get('name')?.touched" [ngStyle]="{color:'red'}">
+                        <div *ngIf="updateEmployeeFormData.get('name')?.hasError('required')">
+                            Name is required field
+                        </div>
+                        <div *ngIf="updateEmployeeFormData.get('name')?.hasError('minlength')">
+                            Name should be atleast 4 character long
+                        </div>
+                    </div>
+                </td>
+                <td *ngIf="updateEmployeeFlag && employee.id == updateEmployeeId">
+                    <input type="email" name="email" formControlName="email">
+                </td>
+                <td *ngIf="updateEmployeeFlag && employee.id == updateEmployeeId">
+                    <input type="number" name="salary" formControlName="salary">
+                </td>
+                <td *ngIf="updateEmployeeFlag && employee.id == updateEmployeeId">
+                    <button type="submit" [disabled]="!updateEmployeeFormData.valid">Update</button>
+                    <button type="button">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+<button *ngFor="let page of totalPages | array" (click)="onChangePage(page)">{{page}}</button>
