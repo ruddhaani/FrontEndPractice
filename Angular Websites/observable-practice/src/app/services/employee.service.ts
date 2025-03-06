@@ -38,4 +38,10 @@ export class EmployeeService {
       }
     })
   }
+
+  updateEmployees(employeeId : number , employee: Employee) : Observable<HttpResponse<any>>{
+    return this.http.put(`${this.BASE_URL}/${employeeId}` , employee , {
+      observe : 'response'
+    })
+  }
 }

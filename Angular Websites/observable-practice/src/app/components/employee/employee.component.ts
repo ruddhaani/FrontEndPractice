@@ -6,6 +6,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ArrayPipe } from '../../pipes/array.pipe';
 import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
@@ -69,6 +70,13 @@ export class EmployeeComponent {
   searchText : string = "";
   totalCount : number = 0;
   totalPages: number = 0;
+  updateEmployeeFlag : boolean = false;
+  updateEmployeeId : number = -1;
+  updateEmployeeFormData : FormGroup = new FormGroup({
+    "name" : new FormControl("" , [Validators.required]),
+    "email" : new FormControl("" , [Validators.required]),
+    "salary" : new FormControl(0 , [Validators.required])
+  });
 
   ngOnInit(){
     this.loadEmployees();
