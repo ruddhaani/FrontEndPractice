@@ -4,14 +4,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Layout from './components/Layout'
 import { BrowserRouter } from 'react-router'
+import Home from './components/Home'
 
 function App() {
 
   return (
     <>
-     <BrowserRouter>
-      <Layout></Layout>
-     </BrowserRouter>
+     <Home></Home>
     </>
   )
 }
