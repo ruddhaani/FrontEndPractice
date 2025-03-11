@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 
 const Stopwatch = () => {
     const [seconds , setSeconds] = useState(0);
@@ -12,9 +12,9 @@ const Stopwatch = () => {
         });
     }
 
-    function handleReset(){
+    let handleReset = useCallback(() => {
         setSeconds(0);
-    }
+    })
 
     function handleStop(){
         clearInterval(intervalRef.current);
